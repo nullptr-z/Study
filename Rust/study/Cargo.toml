@@ -1,0 +1,14 @@
+[workspace]
+members=[
+  # "scrape_url",
+  # "httpie",
+  # "thumbor",
+  # "kv",
+  # "queryers",
+  # "trait_test",
+  # "my-redis",
+  # "image_service",
+  # "con_utils",
+  # "bzlib-sys",
+  "testDome",
+]

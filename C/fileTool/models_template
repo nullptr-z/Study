@@ -1,0 +1,21 @@
+
+import { fetchData } from '@/services/$1';
+export default {
+  namespace: '$1',
+  state: {
+    data: [],
+  },
+  effects: {
+    *getData(_, { put, call }) {
+      const data = yield call(fetchData);
+      if (data && data.code === 1) {
+        yield put({ type: 'updateState', payload: { data: data.data } });
+      }
+    }
+  },
+  reducers: {
+    updateState(state, { payload }) {
+      return { ...state, ...payload };
+    }
+  }
+}

@@ -1,0 +1,5 @@
+[workspace]
+members=[
+  "algorithm",
+  "trait_test"
+]

@@ -1,0 +1,35 @@
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "mac_gcc",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+      "args": [
+        "127.0.0.1",
+        "887",
+      ],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "preLaunchTask": "mac_gcc", // 编译前执行的任务
+      "MIMode": "lldb"
+    },
+    {
+      "name": " 启动",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "args": [
+        "localhost",
+      ],
+      "preLaunchTask": "socket", // 编译前执行的任务
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

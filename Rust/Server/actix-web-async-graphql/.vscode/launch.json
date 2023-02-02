@@ -1,0 +1,156 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'backend'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=backend",
+                    "--package=backend"
+                ],
+                "filter": {
+                    "name": "backend",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'backend'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=backend",
+                    "--package=backend"
+                ],
+                "filter": {
+                    "name": "backend",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'frontend-handlebars'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=frontend-handlebars",
+                    "--package=frontend-handlebars"
+                ],
+                "filter": {
+                    "name": "frontend-handlebars",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'frontend-handlebars'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=frontend-handlebars",
+                    "--package=frontend-handlebars"
+                ],
+                "filter": {
+                    "name": "frontend-handlebars",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'frontend-wasm'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=frontend-wasm",
+                    "--package=frontend-wasm"
+                ],
+                "filter": {
+                    "name": "frontend-wasm",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'frontend-wasm'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=frontend-wasm",
+                    "--package=frontend-wasm"
+                ],
+                "filter": {
+                    "name": "frontend-wasm",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'actix-web-async-graphql'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=actix-web-async-graphql",
+                    "--package=actix-web-async-graphql"
+                ],
+                "filter": {
+                    "name": "actix-web-async-graphql",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'actix-web-async-graphql'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=actix-web-async-graphql",
+                    "--package=actix-web-async-graphql"
+                ],
+                "filter": {
+                    "name": "actix-web-async-graphql",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

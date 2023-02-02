@@ -1,0 +1,97 @@
+kkkkkkk
+i
+w
+ggg
+e
+parison(source, compare) {$1   $2  $3   $5
+  for (let i = 0; i < source.length; i++) {
+    if (source[i]) {
+      if (!compare[i]) return false
+      const lowerS = source[i].toLowerCase()
+      const lowerC = compare[i].toLowerCase()
+      if (lowerS === lowerC)
+        continue
+      return lowerS > lowerC
+    }
+    return true
+  }
+}
+
+const columns = ({ handleRowSearch }) => {
+  return [
+    {
+      align: 'left',
+      title: '应用Id',
+      dataIndex: 'appId',
+      width: 150,
+      key: 'appId',
+      render: (text, record) => <a onClick={(e) => {
+        e.stopPropagation();
+        handleRowSearch && handleRowSearch(record, null);
+      }}>{text}</a>,
+      sorter: (a, b) => letterComparison(a.appId, b.appId) ? 1 : -1,
+    },
+    {
+      align: 'center',
+      title: 'Info',
+      dataIndex: 'infoCount',
+      width: 150,
+      key: 'infoCount',
+      render: (text, record) => <a onClick={(e) => {
+        e.stopPropagation();
+        handleRowSearch && handleRowSearch(record, 'info');
+      }}>{text}</a>,
+      sorter: (a, b) => a.infoCount - b.infoCount
+    },
+    {
+      align: 'center',
+      title: 'Warn',
+      dataIndex: 'warnCount',
+      width: 150,
+      key: 'warnCount',
+      render: (text, record) => <a onClick={(e) => {
+        e.stopPropagation();
+        handleRowSearch && handleRowSearch(record, 'warn');
+      }}>{text}</a>,
+      sorter: (a, b) => a.warnCount - b.warnCount
+    },
+    {
+      align: 'center',
+      title: 'Error',
+      dataIndex: 'errorCount',
+      width: 150,
+      key: 'errorCount',
+      render: (text, record) => <a onClick={(e) => {
+        e.stopPropagation();
+        handleRowSearch && handleRowSearch(record, 'error');
+      }}>{text}</a>,
+      sorter: (a, b) => a.errorCount - b.errorCount
+    },
+    {
+      align: 'center',
+      title: 'Debug',
+      dataIndex: 'debugCount',
+      width: 150,
+      key: 'debugCount',
+      render: (text, record) => <a onClick={(e) => {
+        e.stopPropagation();
+        handleRowSearch && handleRowSearch(record, 'debug');
+      }}>{text}</a>,
+      sorter: (a, b) => a.debugCount - b.debugCount
+    },
+    {
+      align: 'center',
+      title: 'Trace',
+      dataIndex: 'traceCount',
+      width: 150,
+      key: 'traceCount',
+      render: (text, record) => <a onClick={(e) => {
+        e.stopPropagation();
+        handleRowSearch && handleRowSearch(record, 'trace');
+      }}>{text}</a>,
+      sorter: (a, b) => a.traceCount - b.traceCount
+    },
+  ];
+};
+
+export default columns;

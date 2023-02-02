@@ -1,0 +1,71 @@
+{
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "socket",
+      "command": "/usr/bin/gcc-8",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}",
+        "${workspaceFolder}/test_demo/csapp_demo/csapp.c",
+        "-pthread"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "调试器生成的任务。"
+    },
+    {
+      "type": "cppbuild",
+      "label": "mac_gcc",
+      "command": "/usr/bin/gcc",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "${file}",
+        "${workspaceFolder}/test_demo/csapp_demo/csapp.c",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.out",
+      ],
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "编译器: /usr/bin/gcc"
+    },
+    {
+      "type": "cppbuild",
+      "label": "tiny",
+      "command": "/usr/bin/gcc",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "${fileDirname}/csapp.c",
+        "${file}",
+        "${fileDirname}/doit.c",
+        "${fileDirname}/read_requesthdrs.c",
+        "${fileDirname}/parse_uri.c",
+        "${fileDirname}/serve_dynamic.c",
+        "${fileDirname}/serve_static.c",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.out",
+      ],
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "编译器: /usr/bin/gcc"
+    }
+  ],
+  "version": "2.0.0"
+}

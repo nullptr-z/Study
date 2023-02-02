@@ -1,0 +1,7 @@
+[serve]
+port = 8081     #服务绑定端口
+open = true     #执行 trunk serve 命令时，是否自动在浏览器打开页面
+
+[build]
+target = "index.html"
+dist = "dist"

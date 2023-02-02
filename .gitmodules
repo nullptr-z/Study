@@ -1,0 +1,6 @@
+[submodule "Cpp/Cpp_primer"]
+	path = Cpp/Cpp_primer
+	url = git@github.com:nullptr-z/Cpp_primer.git
+[submodule "typeScript"]
+	path = typeScript
+	url = git@github.com:nullptr-z/typeScript.git

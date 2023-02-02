@@ -1,0 +1,4 @@
+Rust/this_cargo/target/
+Rust/this_cargo/Cargo.lock
+Rust/this_cargo/.vscode/
+*.out

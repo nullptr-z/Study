@@ -1,0 +1,26 @@
+.logo-title {
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.projects {
+  background-color: green;
+}
+-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: semicolons aren't allowed in the indented syntax.\a   \2577 \a 4 \2502      background-color: $users-color;\a   \2502                                    ^\a   \2575 \a   assets/css/style.sass 4:35  root stylesheet";
+}

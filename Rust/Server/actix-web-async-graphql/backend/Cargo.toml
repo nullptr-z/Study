@@ -1,0 +1,27 @@
+[package]
+name = "backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+
+[dependencies]
+# web服务框架
+actix-web = "3.3.3"
+#actix-rt = "1.1.1"
+
+# 读取.env文件的包
+lazy_static = "1.4.0"
+dotenv = "0.15.0"
+
+# graphql
+async-graphql = { version = "2.8.4", features = ["bson", "chrono"] }
+# 使用此包将 graphql类型转换为 actix-web类型
+async-graphql-actix-web = "2.8.4"
+
+# 用于链接数据库的包:mysql,manggodb,sqlserver ...
+rbatis = { version = "1.8.84", default-features = false, features = ["mysql", "postgres"] }
+# 实体类 tarit
+serde = { version = "1.0.132", features = ["derive"] }
+
