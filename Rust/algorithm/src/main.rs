@@ -2,7 +2,7 @@ mod sort;
 use sort::*;
 use std::time::Instant;
 fn main() {
-    let MAX = 1000000usize;
+    let MAX = 10000usize;
     let mergeArray = get_gen_range_array(MAX, |num| {
         Message::new(num, format!("wawa-{}", num).as_str())
         // num

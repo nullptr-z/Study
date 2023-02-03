@@ -11,6 +11,8 @@ mod search_struct;
 mod solve;
 mod sort;
 
+mod queue;
+
 #[derive(Clone, Copy, PartialEq, PartialOrd)]
 pub struct User {
     pub age: i32,
