@@ -11,6 +11,8 @@ mod search_struct;
 mod solve;
 mod sort;
 
+mod MinStack;
+
 mod queue;
 
 #[derive(Clone, Copy, PartialEq, PartialOrd)]
