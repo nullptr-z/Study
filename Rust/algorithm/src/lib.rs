@@ -8,6 +8,7 @@ use rand::Rng;
 mod query;
 mod search_struct;
 
+mod offer06;
 mod solve;
 mod sort;
 
