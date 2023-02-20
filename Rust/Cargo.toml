@@ -1,5 +1,6 @@
 [workspace]
 members=[
   "algorithm",
-  "trait_test"
+  "trait_test",
+  "wasm-of-js"
 ]
