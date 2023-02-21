@@ -2,5 +2,5 @@
 members=[
   "algorithm",
   "trait_test",
-  "wasm-of-js"
+  "rust-of-wasm"
 ]
