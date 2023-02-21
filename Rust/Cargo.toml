@@ -1,6 +1,0 @@
-[workspace]
-members=[
-  "algorithm",
-  "trait_test",
-  "rust-of-wasm"
-]

@@ -2,26 +2,29 @@ install zsh
 
 install.sh
 
-git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
+git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/powerlevel10k
+echo 'source ~/.oh-my-zsh/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 
-可以通过执行p10k configure命令来配置 powerlevel11k
 
-### iterm2配置
-https://www.jianshu.com/p/405956cdaca6
+语法高亮:
+sudo apt install zsh-syntax-highlighting
 
-语法高亮: 
-suod apt install zsh-syntax-highlighting
-
-~/.zshrc << "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
 
 命令行提示:
-克隆仓库到本地 ~/.oh-my-zsh/custom/plugins 路径下
-git clone git://github.com/zsh-users/zsh-autosuggestions 
+克隆仓库到本地
+cd ~/.oh-my-zsh/custom/plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions.git
 $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
-echo "plugins=(zsh-autosuggestions git)" >> ~/.zshrc  
+echo "plugins=(zsh-autosuggestions git)" >> ~/.zshrc
 
-source ~/.zshrc 
+source ~/.zshrc
 
+
+可以通过执行命令来配置 powerlevel11k：
+p10k configure
+
+### iterm2配置
+https://www.jianshu.com/p/405956cdaca6
