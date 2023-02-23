@@ -1,0 +1,29 @@
+Host luban
+HostName 10.10.106.61
+User root
+
+Host vpn
+HostName 104.194.225.119
+User root
+
+Host home_deepin
+HostName 104.194.225.119
+Port 2203
+User zheng
+
+Host mac
+HostName 104.194.225.119
+User zheng
+Port 1100
+
+Host lq
+HostName 192.168.1.102
+User zheng
+Port 22
+
+Host mac_air
+HostName 192.168.188.122
+User zhouzheng
+Port 22
+
+# server.zhengmr.website: 139.9.203.238
