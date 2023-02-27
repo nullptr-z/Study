@@ -1,7 +1,6 @@
 use serde_json::json;
-use sycamore::prelude::*;
-use tracing::Instrument;
-use web_sys::{HtmlMediaElement, HtmlVideoElement, Node};
+use sycamore::{futures, noderef, prelude::*};
+use web_sys::HtmlVideoElement;
 use webcam::VideoStream;
 
 fn main() {
@@ -19,14 +18,15 @@ fn main() {
 
 #[component]
 fn Video<G: Html>(ctx: BoundedScope) -> View<G> {
-    let video_ref = create_node_ref(ctx);
-    on_mount(ctx, || {
-        let node = video_ref.get::<DomNode>();
-        let el = node.unchecked_into::<HtmlVideoElement>();
+    let video_ref = noderef::create_node_ref(ctx);
+    futures::spawn_local_scoped(ctx, async move {
+        let el = video_ref.get::<DomNode>().unchecked_into();
         let video_stream = VideoStream::new(el);
-        video_stream.set_video_src(&json!({
-            "auto":false, "video":{ "facingMode":"environment","width":640, "height":480},
-        }))
+        video_stream
+            .set_video_src(&json!({
+                "auto":false, "video":{ "facingMode": "environment", "width": 640, "height": 480 },
+            }))
+            .await;
     });
     view! {ctx,
         div(ref=video_ref)
