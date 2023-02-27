@@ -460,6 +460,10 @@ imports.wbg.__wbg_outerHTML_e29ac244117c6543 = function(arg0, arg1) {
     getInt32Memory0()[arg0 / 4 + 1] = len0;
     getInt32Memory0()[arg0 / 4 + 0] = ptr0;
 };
+imports.wbg.__wbg_removeAttribute_ad7a5bf2eed30373 = function() { return handleError(function (arg0, arg1, arg2) {
+    var v0 = getCachedStringFromWasm0(arg1, arg2);
+    getObject(arg0).removeAttribute(v0);
+}, arguments) };
 imports.wbg.__wbg_setAttribute_79c9562d32d05e66 = function() { return handleError(function (arg0, arg1, arg2, arg3, arg4) {
     var v0 = getCachedStringFromWasm0(arg1, arg2);
     var v1 = getCachedStringFromWasm0(arg3, arg4);
@@ -566,7 +570,7 @@ imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
 imports.wbg.__wbindgen_throw = function(arg0, arg1) {
     throw new Error(getStringFromWasm0(arg0, arg1));
 };
-imports.wbg.__wbindgen_closure_wrapper4909 = function(arg0, arg1, arg2) {
+imports.wbg.__wbindgen_closure_wrapper4915 = function(arg0, arg1, arg2) {
     const ret = makeMutClosure(arg0, arg1, 320, __wbg_adapter_28);
     return addHeapObject(ret);
 };
@@ -604,7 +608,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('webcam-9be335321b882bbc_bg.wasm', import.meta.url);
+        input = new URL('webcam-ac79d548dcc0ecd0_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 

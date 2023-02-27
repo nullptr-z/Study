@@ -3,7 +3,7 @@ HostName 10.10.106.61
 User root
 
 Host vpn
-HostName 104.194.225.119
+HostName 216.127.186.107
 User root
 
 Host home_deepin
