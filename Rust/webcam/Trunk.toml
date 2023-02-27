@@ -8,3 +8,6 @@ command_arguments=[
   "-o",
   "dist/.stage/tailwind.css"
 ]
+
+[workspace]
+members = [".", "src-tauri"]

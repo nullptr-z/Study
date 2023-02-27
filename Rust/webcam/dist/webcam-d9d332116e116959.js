@@ -1,5 +1,25 @@
 let wasm;
 
+const heap = new Array(128).fill(undefined);
+
+heap.push(undefined, null, true, false);
+
+function getObject(idx) { return heap[idx]; }
+
+let heap_next = heap.length;
+
+function dropObject(idx) {
+    if (idx < 132) return;
+    heap[idx] = heap_next;
+    heap_next = idx;
+}
+
+function takeObject(idx) {
+    const ret = getObject(idx);
+    dropObject(idx);
+    return ret;
+}
+
 const cachedTextDecoder = new TextDecoder('utf-8', { ignoreBOM: true, fatal: true });
 
 cachedTextDecoder.decode();
@@ -17,12 +37,6 @@ function getStringFromWasm0(ptr, len) {
     return cachedTextDecoder.decode(getUint8Memory0().subarray(ptr, ptr + len));
 }
 
-const heap = new Array(128).fill(undefined);
-
-heap.push(undefined, null, true, false);
-
-let heap_next = heap.length;
-
 function addHeapObject(obj) {
     if (heap_next === heap.length) heap.push(heap.length + 1);
     const idx = heap_next;
@@ -31,8 +45,6 @@ function addHeapObject(obj) {
     heap[idx] = obj;
     return idx;
 }
-
-function getObject(idx) { return heap[idx]; }
 
 let WASM_VECTOR_LEN = 0;
 
@@ -102,18 +114,6 @@ function getInt32Memory0() {
     return cachedInt32Memory0;
 }
 
-function dropObject(idx) {
-    if (idx < 132) return;
-    heap[idx] = heap_next;
-    heap_next = idx;
-}
-
-function takeObject(idx) {
-    const ret = getObject(idx);
-    dropObject(idx);
-    return ret;
-}
-
 function debugString(val) {
     // primitive types
     const type = typeof val;
@@ -179,6 +179,31 @@ function debugString(val) {
     return className;
 }
 
+function makeClosure(arg0, arg1, dtor, f) {
+    const state = { a: arg0, b: arg1, cnt: 1, dtor };
+    const real = (...args) => {
+        // First up with a closure we increment the internal reference
+        // count. This ensures that the Rust closure environment won't
+        // be deallocated while we're invoking it.
+        state.cnt++;
+        try {
+            return f(state.a, state.b, ...args);
+        } finally {
+            if (--state.cnt === 0) {
+                wasm.__wbindgen_export_2.get(state.dtor)(state.a, state.b);
+                state.a = 0;
+
+            }
+        }
+    };
+    real.original = state;
+
+    return real;
+}
+function __wbg_adapter_28(arg0, arg1) {
+    wasm._dyn_core__ops__function__Fn_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h409ea1a45b7339ba(arg0, arg1);
+}
+
 function makeMutClosure(arg0, arg1, dtor, f) {
     const state = { a: arg0, b: arg1, cnt: 1, dtor };
     const real = (...args) => {
@@ -203,7 +228,7 @@ function makeMutClosure(arg0, arg1, dtor, f) {
 
     return real;
 }
-function __wbg_adapter_28(arg0, arg1, arg2) {
+function __wbg_adapter_31(arg0, arg1, arg2) {
     wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hc96e9dc7084d5355(arg0, arg1, addHeapObject(arg2));
 }
 
@@ -257,6 +282,15 @@ async function load(module, imports) {
 function getImports() {
     const imports = {};
     imports.wbg = {};
+    imports.wbg.__wbindgen_cb_drop = function(arg0) {
+        const obj = takeObject(arg0).original;
+        if (obj.cnt-- == 1) {
+            obj.a = 0;
+            return true;
+        }
+        const ret = false;
+        return ret;
+    };
     imports.wbg.__wbindgen_error_new = function(arg0, arg1) {
         const ret = new Error(getStringFromWasm0(arg0, arg1));
         return addHeapObject(ret);
@@ -344,6 +378,9 @@ imports.wbg.__wbg_setclassName_f86a95d6ffe042e6 = function() { return handleErro
     var v0 = getCachedStringFromWasm0(arg1, arg2);
     getObject(arg0).className = v0;
 }, arguments) };
+imports.wbg.__wbg_queueMicrotask_b580a35152f7cc7c = function(arg0) {
+    queueMicrotask(getObject(arg0));
+};
 imports.wbg.__wbg_instanceof_Window_e266f02eee43b570 = function(arg0) {
     let result;
     try {
@@ -472,15 +509,6 @@ imports.wbg.__wbg_setAttribute_79c9562d32d05e66 = function() { return handleErro
 imports.wbg.__wbg_log_7bb108d119bafbc1 = function(arg0) {
     console.log(getObject(arg0));
 };
-imports.wbg.__wbindgen_cb_drop = function(arg0) {
-    const obj = takeObject(arg0).original;
-    if (obj.cnt-- == 1) {
-        obj.a = 0;
-        return true;
-    }
-    const ret = false;
-    return ret;
-};
 imports.wbg.__wbg_new_b525de17f44a8943 = function() {
     const ret = new Array();
     return addHeapObject(ret);
@@ -570,8 +598,12 @@ imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
 imports.wbg.__wbindgen_throw = function(arg0, arg1) {
     throw new Error(getStringFromWasm0(arg0, arg1));
 };
-imports.wbg.__wbindgen_closure_wrapper4915 = function(arg0, arg1, arg2) {
-    const ret = makeMutClosure(arg0, arg1, 320, __wbg_adapter_28);
+imports.wbg.__wbindgen_closure_wrapper121 = function(arg0, arg1, arg2) {
+    const ret = makeClosure(arg0, arg1, 51, __wbg_adapter_28);
+    return addHeapObject(ret);
+};
+imports.wbg.__wbindgen_closure_wrapper4953 = function(arg0, arg1, arg2) {
+    const ret = makeMutClosure(arg0, arg1, 330, __wbg_adapter_31);
     return addHeapObject(ret);
 };
 
@@ -608,7 +640,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('webcam-ac79d548dcc0ecd0_bg.wasm', import.meta.url);
+        input = new URL('webcam-d9d332116e116959_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 
