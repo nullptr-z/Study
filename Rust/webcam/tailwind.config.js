@@ -1,5 +1,5 @@
-module.export = {
-  content: ["src/**/*.rs"],
+module.exports = {
+  purge: ["src/**/*.rs"],
   theme: {
     extend: {},
   },

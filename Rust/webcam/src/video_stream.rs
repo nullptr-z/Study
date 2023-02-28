@@ -1,7 +1,9 @@
 use tracing::info;
 use wasm_bindgen::JsCast;
 use wasm_bindgen_futures::JsFuture;
-use web_sys::{HtmlVideoElement, MediaStream, MediaStreamConstraints};
+use web_sys::{console, HtmlVideoElement, MediaStream, MediaStreamConstraints};
+
+use crate::Devices;
 
 pub struct VideoStream {
     el: HtmlVideoElement,
@@ -13,11 +15,8 @@ impl VideoStream {
     }
 
     pub async fn set_video_src(&self, constraints_serde_json: &serde_json::Value) {
-        let window = web_sys::window().expect("window获取失败！");
-        let navigator = window.navigator();
-        let media_devices = navigator.media_devices().expect("mediaDevices get error");
-        web_sys::console::log_1(&media_devices);
-        // mediaDevices.get_user_media(constraints);
+        let media_devices = Devices::get_media_devices();
+
         let mut constraints = MediaStreamConstraints::new();
         constraints.video(
             &serde_wasm_bindgen::to_value(constraints_serde_json)

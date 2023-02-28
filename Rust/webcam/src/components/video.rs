@@ -1,7 +1,8 @@
 use serde_json::json;
 use sycamore::{futures, noderef, prelude::*};
+use tracing::info;
 
-use crate::VideoStream;
+use crate::{Controls, Devices, VideoStream};
 
 #[component]
 pub fn Video<G: Html>(ctx: BoundedScope) -> View<G> {
@@ -16,19 +17,23 @@ pub fn Video<G: Html>(ctx: BoundedScope) -> View<G> {
                     "video":{ "facingMode": "environment", "width": 1280, "height": 720 },
                 }))
                 .await;
+
+            // let devices = Devices::load().await;
+            // info!("devices:{:?}", devices);
         });
     });
 
     view! {ctx,
-    div{
+    div(class="relative"){
         video(
             ref=video_ref,
-            style="border:1px solid red",
+            class="rounded-lg",
             width=640,
             height=480,
             autoplay=true,
             // src="https://imgs-qn.51miz.com/preview/video/00/00/14/33/V-143360-BCE1F72B.mp4",
         )
-    }
+        Controls()
+        }
     }
 }
