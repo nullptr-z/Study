@@ -3,7 +3,7 @@ stage="build"
 command="tailwindcss"
 command_arguments=[
   "build",
-  "i",
+  "-i",
   "index.css",
   "-o",
   "dist/.stage/tailwind.css"

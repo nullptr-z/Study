@@ -12,8 +12,8 @@ pub fn Video<G: Html>(ctx: BoundedScope) -> View<G> {
             let video_stream = VideoStream::new(el);
             video_stream
                 .set_video_src(&json!({
-                    "audio":false,
-                    "video":{ "facingMode": "environment", "width": 640, "height": 480 },
+                    "audio": true,
+                    "video":{ "facingMode": "environment", "width": 1280, "height": 720 },
                 }))
                 .await;
         });
@@ -24,10 +24,10 @@ pub fn Video<G: Html>(ctx: BoundedScope) -> View<G> {
         video(
             ref=video_ref,
             style="border:1px solid red",
-            autoplay=false,
             width=640,
             height=480,
-            src="https://imgs-qn.51miz.com/preview/video/00/00/14/33/V-143360-BCE1F72B.mp4",
+            autoplay=true,
+            // src="https://imgs-qn.51miz.com/preview/video/00/00/14/33/V-143360-BCE1F72B.mp4",
         )
     }
     }
