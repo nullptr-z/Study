@@ -31,10 +31,10 @@ impl VideoStream {
             .unwrap();
         web_sys::console::log_1(&with_constraints);
         let media_jsv = JsFuture::from(with_constraints).await.unwrap();
-        web_sys::console::log_1(&"123455144".into());
+        web_sys::console::log_1(&"12345514432123".into());
         let media_stream = media_jsv.unchecked_into::<MediaStream>();
         // let media_stream = MediaStream::new_with_tracks(&media_jsv);
-        info!("media_stream (tracing_wasm) {:?}", media_stream);
+        info!("media_stream - (tracing_wasm) {:?}", media_stream);
         self.el.set_src_object(Some(&media_stream));
     }
 }

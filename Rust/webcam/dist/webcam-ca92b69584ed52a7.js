@@ -640,7 +640,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('webcam-3ce14b88a38f851a_bg.wasm', import.meta.url);
+        input = new URL('webcam-ca92b69584ed52a7_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 
