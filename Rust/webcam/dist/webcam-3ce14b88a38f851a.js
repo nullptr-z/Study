@@ -602,8 +602,8 @@ imports.wbg.__wbindgen_closure_wrapper121 = function(arg0, arg1, arg2) {
     const ret = makeClosure(arg0, arg1, 51, __wbg_adapter_28);
     return addHeapObject(ret);
 };
-imports.wbg.__wbindgen_closure_wrapper4953 = function(arg0, arg1, arg2) {
-    const ret = makeMutClosure(arg0, arg1, 330, __wbg_adapter_31);
+imports.wbg.__wbindgen_closure_wrapper4964 = function(arg0, arg1, arg2) {
+    const ret = makeMutClosure(arg0, arg1, 332, __wbg_adapter_31);
     return addHeapObject(ret);
 };
 
@@ -640,7 +640,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('webcam-d9d332116e116959_bg.wasm', import.meta.url);
+        input = new URL('webcam-3ce14b88a38f851a_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 

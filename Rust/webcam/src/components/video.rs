@@ -12,8 +12,8 @@ pub fn Video<G: Html>(ctx: BoundedScope) -> View<G> {
             let video_stream = VideoStream::new(el);
             video_stream
                 .set_video_src(&json!({
-                    "audio":true,
-                    // "video":{ "facingMode": "environment", "width": 640, "height": 480 },
+                    "audio":false,
+                    "video":{ "facingMode": "environment", "width": 640, "height": 480 },
                 }))
                 .await;
         });
