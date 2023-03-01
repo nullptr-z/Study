@@ -1,8 +1,9 @@
 use std::ops::Deref;
 
+use tracing::info;
 use wasm_bindgen::{JsCast, JsValue};
 use wasm_bindgen_futures::JsFuture;
-use web_sys::{console, MediaDeviceInfo, MediaDeviceKind, MediaDevices};
+use web_sys::{MediaDeviceInfo, MediaDeviceKind, MediaDevices, MediaStreamConstraints};
 
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct Devices(Vec<Device>);
@@ -25,18 +26,31 @@ impl Iterator for Devices {
 
 impl Devices {
     pub async fn load() -> Self {
-        let media_devices = Self::get_media_devices();
-        let list_media_devices = JsFuture::from(media_devices.enumerate_devices().unwrap())
-            .await
-            .unwrap();
+        let media_devices = Self::get_media_devices().await;
+        let list_media_devices = JsFuture::from(
+            media_devices
+                .enumerate_devices()
+                .expect("enumerate_devices 调用出错"),
+        )
+        .await
+        .unwrap();
 
         Self::from(&list_media_devices)
     }
 
-    pub fn get_media_devices() -> MediaDevices {
+    pub async fn get_media_devices() -> MediaDevices {
+        // MediaStreamConstraints::new().video(&true.into());
         let window = web_sys::window().expect("window获取失败！");
         let navigator = window.navigator();
         let media_devices = navigator.media_devices().expect("mediaDevices get error");
+
+        JsFuture::from(
+            media_devices
+                .get_user_media_with_constraints(&MediaStreamConstraints::new().video(&true.into()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
 
         media_devices
     }

@@ -12,14 +12,12 @@ pub fn Video<G: Html>(ctx: BoundedScope) -> View<G> {
         "" => {
             json!({
                 "facingMode": "user",
-                "width": { "exact":state.get_width()},
-                "height": { "exact":state.get_height()}
             })
         }
         id => {
             json!({"deviceId": { "exact": id},
-               "width": { "exact":state.get_width()},
-               "height": { "exact":state.get_height()}
+            // "width": { "exact":state.get_width()},
+            // "height": { "exact":state.get_height()}
             })
         }
     });

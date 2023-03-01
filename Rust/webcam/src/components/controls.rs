@@ -10,9 +10,10 @@ pub fn Controls<'a, 'b, G: Html>(
     show_controls: &'a Signal<bool>,
 ) -> View<G> {
     let state = use_context::<AppState>(ctx);
-    let binding = state.devices.get();
-    let devices: &ReadSignal<Vec<Device>> =
-        create_memo(ctx, move || binding.video_devices().cloned().collect());
+    let devices: &ReadSignal<Vec<Device>> = create_memo(ctx, move || {
+        state.devices.get().video_devices().cloned().collect()
+    });
+    info!("devices:{:?}", devices);
 
     let visible = create_memo(ctx, || match *show_controls.get() {
         true => "visible",
@@ -20,9 +21,9 @@ pub fn Controls<'a, 'b, G: Html>(
     });
 
     view! {ctx,
-        div(class=format!("absolute top-1 P-2 {} border",visible)){
+        div(class=format!("absolute top-0 {}",visible)){
             select(
-                class="bg-blue-500 rounded-sm p-1",
+                class="rounded-lg",
                 on:click=|e: Event|{
                     let target=e.target().unwrap().unchecked_into::<HtmlSelectElement>();
                     let device_id=target.value();

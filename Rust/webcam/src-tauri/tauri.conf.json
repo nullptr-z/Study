@@ -3,10 +3,11 @@
     "beforeBuildCommand": "",
     "beforeDevCommand": "",
     "devPath": "http://127.0.0.1:8080",
-    "distDir": "../dist"
+    "distDir": "../dist",
+    "withGlobalTauri": true
   },
   "package": {
-    "productName": "camera_desktop",
+    "productName": "camore_desk",
     "version": "0.1.0"
   },
   "tauri": {
@@ -28,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "camera-desk-zz",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -54,12 +55,16 @@
     },
     "windows": [
       {
-        "fullscreen": false,
-        "height": 600,
+        "title": "camore_desk",
+        "width": 640,
+        "height": 480,
         "resizable": true,
-        "title": "camera",
-        "width": 800
+        "alwaysOnTop": true,
+        "decorations": false,
+        "transparent": true,
+        "center": true
       }
-    ]
+    ],
+    "macOSPrivateApi": true
   }
 }

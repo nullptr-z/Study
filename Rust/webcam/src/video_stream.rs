@@ -14,7 +14,7 @@ impl VideoStream {
     }
 
     pub async fn set_video_src(&self, constraints_serde_json: &serde_json::Value) {
-        let media_devices = Devices::get_media_devices();
+        let media_devices = Devices::get_media_devices().await;
 
         let mut constraints = MediaStreamConstraints::new();
         constraints.video(
