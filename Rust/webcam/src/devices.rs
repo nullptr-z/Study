@@ -29,6 +29,7 @@ impl Devices {
         let list_media_devices = JsFuture::from(media_devices.enumerate_devices().unwrap())
             .await
             .unwrap();
+
         Self::from(&list_media_devices)
     }
 

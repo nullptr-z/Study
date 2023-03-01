@@ -9,14 +9,25 @@ pub use video_stream::VideoStream;
 
 #[derive(Debug)]
 pub struct AppState {
+    pub dimensions: RcSignal<(u32, u32)>,
     pub device_id: RcSignal<String>,
     pub devices: RcSignal<Devices>,
 }
 
 impl AppState {
     pub async fn new() -> Self {
-        let device_id = create_rc_signal("".into());
-        let devices = create_rc_signal(Devices::load().await);
-        Self { device_id, devices }
+        Self {
+            dimensions: create_rc_signal((650, 480)),
+            device_id: create_rc_signal("".into()),
+            devices: create_rc_signal(Devices::load().await),
+        }
+    }
+
+    pub fn get_width(&self) -> u32 {
+        self.dimensions.get().0
+    }
+
+    pub fn get_height(&self) -> u32 {
+        self.dimensions.get().1
     }
 }

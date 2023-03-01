@@ -1,18 +1,26 @@
 use sycamore::prelude::*;
 use tracing::info;
 use wasm_bindgen::JsCast;
-use web_sys::{console, Event, HtmlSelectElement};
+use web_sys::{Event, HtmlSelectElement};
 
 use crate::{AppState, Device};
 
-pub fn Controls<G: Html>(ctx: BoundedScope) -> View<G> {
+pub fn Controls<'a, 'b, G: Html>(
+    ctx: BoundedScope<'a, 'b>,
+    show_controls: &'a Signal<bool>,
+) -> View<G> {
     let state = use_context::<AppState>(ctx);
     let binding = state.devices.get();
     let devices: &ReadSignal<Vec<Device>> =
         create_memo(ctx, move || binding.video_devices().cloned().collect());
 
+    let visible = create_memo(ctx, || match *show_controls.get() {
+        true => "visible",
+        false => "invisible",
+    });
+
     view! {ctx,
-        div(class="absolute  bottom-2 p-5 "){
+        div(class=format!("absolute top-1 P-2 {} border",visible)){
             select(
                 class="bg-blue-500 rounded-sm p-1",
                 on:click=|e: Event|{
