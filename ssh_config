@@ -17,7 +17,12 @@ User zheng
 Port 1100
 
 Host lq
-HostName 192.168.1.102
+  HostName 192.168.188.9
+  User zheng
+  Port 22
+
+Host lq_home
+HostName 192.168.1.100
 User zheng
 Port 22
 
