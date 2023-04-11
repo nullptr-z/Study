@@ -1,7 +1,4 @@
-use std::{
-    fmt::format,
-    ops::{Add, Range, Sub},
-};
+use std::ops::{Add, Range, Sub};
 
 use rand::Rng;
 
