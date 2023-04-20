@@ -31,7 +31,7 @@ pub mod Test_client{ ... }
 
 
 ## Builder Attributes
-类似 `tonic_build`，他也有一些`Builder Attributes Struct`，可以在`proto`文件中添加，来控制`tonic`的行为, 或者添加属性
+类似 `prost_build`，他也有一些`Builder Attributes Struct`，可以在`proto`文件中添加，来控制`tonic`的行为, 或者添加属性
 
 
 
