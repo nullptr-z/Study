@@ -40,6 +40,9 @@ Struck: `Request`, `Response`, `Status`, `Streaming`
 
 Trait: `IntoRequest`, `IntoResponse`, `IntoStreamingRequest`, `IntoStreamingResponse`
 
+## 辅助功能
+ `#[tonic::async_trait]`
+tonic对`async_trait`的支持，不需要在项目中额外添加`async_trait`的依赖
 
 
 #### Request
