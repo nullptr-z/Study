@@ -7,6 +7,8 @@ into_inner() 方法会转移结构体的所有权。调用之后旧的结构将�
 结构体必须实现 std::convert::From<T> trait，其中 T 是结构体内部值的类型。
 结构体必须实现 std::convert::Into<T> trait，其中 T 是结构体内部值的类型。
 
+一般情况下，只有在所有权转移的场合才会调用 into_inner() 方法。在 Rust 中，这种思想广泛应用于各种类型中，例如以下:
+
 std::sync::Arc<T>：允许多个所有权拥有者共享相同的值，可以在需要执行某些操作后使用 into_inner() 以优化性能。
 
 std::cell::RefCell<T>：允许在不可变引用的同时修改其内部值，并在仅在确保该值将始终有效时以优化方式访问该值时使用into_inner()。
