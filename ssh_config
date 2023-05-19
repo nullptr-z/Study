@@ -21,6 +21,11 @@ Host lq
   User zheng
   Port 22
 
+Host lqs
+  HostName frp-bus.top
+  User zheng
+  Port 33222
+
 Host lq_home
 HostName 192.168.1.100
 User zheng
@@ -31,4 +36,7 @@ HostName 192.168.188.122
 User zhouzheng
 Port 22
 
-# server.zhengmr.website: 139.9.203.238
+Host lq_home
+HostName frp-box.top
+User zheng
+Port 33322
