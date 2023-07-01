@@ -1,30 +1,32 @@
-*套接字接口是设计可以运行在任意网络协议之上的，不只是TCP/IP；--伯克利套接字*
+_套接字接口是设计可以运行在任意网络协议之上的，不只是 TCP/IP；--伯克利套接字_
 
-*在网络之下，无论客户端还是服务端，没有主机的概念，他们是网络进程*
+_在网络之下，无论客户端还是服务端，没有主机的概念，他们是网络进程_
 
-套接字函数通被时实现为系统调用，因为某些功能需要深入到0特权级，调用内核模式的TCP/IP函数
+套接字函数通常被时实现为**系统调用**，因为某些功能需要深入到 0 特权级，调用内核模式的 TCP/IP 函数
 
-## 创建CS链接步骤
+## 创建 CS 链接步骤
+
 ![](../创建CS链接.png)
 
 ## 套接字对
+
 (chiadrr: cliport, servaddr: servport)
 ↓
 (128.2.194.242: 555, 208.216.191: 666)
 
-
-
 # 常见头文件
+
 ```c
 #include <arpa/*.h>     // 应用层工具包
 #include <netinet/*.h>  // 传输层工具包
 ```
 
-
 # 网络工具函数
+
 不同文件中也存在功能以及实现重叠的函数
 
 **创建/链接**
+
 ```c
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -42,9 +44,8 @@ int listen(int, int)
 int accept(int ,const struct sockaddr *, socklen_t)
 ```
 
-
-
 **大小端字序互转**
+
 ```c
 #include <arpa/inet.h>
 
@@ -52,8 +53,9 @@ uint32_t htonl(uint32_t ); // 网络字节序，大端
 uint32_t ntonl(uint32_t ); // x86体系，小端
 ```
 
-**IP地址和点分十进制互转换**
+**IP 地址和点分十进制互转换**
 注意是的数值 IP 地址
+
 ```c
 #include <arpa/inet.h>
 
@@ -62,9 +64,11 @@ const char* inet_ntop(AF_INET, const void *src, char *dst, socklen_t size)
 ```
 
 # 网络工具结构
-`_in`  后缀代表带着 Internet
+
+`_in` 后缀代表带着 Internet
 
 **套接字结构**
+
 ```c
 早期没有void*, 所以只能把特定协议的套接字结构的指针转成通用套接字结构指针来使用
 
@@ -82,21 +86,16 @@ struct sockaddr {
 }
 ```
 
-
-
-
 # 命令收集
 
-hostname -i;  局域网地址
+hostname -i; 局域网地址
 
-nslookup 域名; 域名到IP的映射，一个域名可能多个IP
-
+nslookup 域名; 域名到 IP 的映射，一个域名可能多个 IP
 
 # 术语
 
-* 点分十进制表示法
-x.x.x.x, 其中 x ·····为十进制数
+- 点分十进制表示法
+  x.x.x.x, 其中 x ·····为十进制数
 
-* 知名端口/服务名
-http  80/tcp； `/etc/services`中包含他们的映射
-
+- 知名端口/服务名
+  http 80/tcp； `/etc/services`中包含他们的映射
