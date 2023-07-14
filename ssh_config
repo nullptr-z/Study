@@ -7,8 +7,8 @@ HostName 216.127.186.107
 User root
 
 Host home_deepin
-HostName 104.194.225.119
-Port 2203
+HostName frp-any.top
+Port 61111
 User zheng
 
 Host mac
@@ -16,18 +16,13 @@ HostName 104.194.225.119
 User zheng
 Port 1100
 
-Host lq_remark
-  HostName 192.168.188.9
-  User zheng
-  Port 22
-
 Host lq
   HostName frp-bus.top
   User zheng
   Port 33222
 
 Host lq_home
-HostName 192.168.1.100
+HostName 192.168.1.104
 User zheng
 Port 22
 
