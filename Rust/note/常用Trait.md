@@ -17,6 +17,7 @@ rust 编译器广泛用于给具体类型`打标签`，`验明正身`之用或�
 > 2.self 在用作方法的第一个参数时，实际上是 self: Self 的简写，所以 &self 是 self: &Self, 而 &mut self 是 self: &mut Self。
 
 ## Trait Object
+
 表现为 `&dyn Trait `或者 `Box<dyn Trait>`两种形式
 dyn 关键字只是用来帮助我们更好地区分普通类型和 Trait 类型，阅读代码时，看到 dyn 就知道后面跟的是一个 trait 了。
 
@@ -38,6 +39,14 @@ Trait Object 的底层逻辑就是胖指针`{ ptr, meta }`:
 ## Into/TryInto
 
 将本类型转换到目标类型
+
+## Send
+
+可以在跨线程时安全地转移，对象实例的所有权
+
+## Sync
+
+可以安全的在多线程共享变量，不会出现数据竞争
 
 ## Deref Trait
 
