@@ -28,8 +28,8 @@ const app = express();
 req.body 是通过 body-parser 插件实现的(据说已经集成到 Express 了)，它会根据请求头 Content-Type 来解析请求体，然后挂载到 req.body 上；通过 app.use() 注册，这样就可以在 req.body 上获取到请求体了，比如：
 
 - `app.use(express.json())` 将`application/json`请求体解析为 JSON 格式, 并且挂载到 `req.body` 上
-- app.use(express.urlencoded()) 将`application/x-www-form-urlencoded`请求体解析为对象, 并且挂载到 `req.body` 上
-- app.use(express.static()) 托管静态资源文件
+- `app.use(express.urlencoded())` 将`application/x-www-form-urlencoded`请求体解析为对象, 并且挂载到 `req.body` 上
+- `app.use(express.static())` 托管静态资源文件
 
 ## Response
 
@@ -52,7 +52,7 @@ Express 的扩展主要是支持链式调用
 
 ## promisify
 
-将 Nodejs 原生的异步方法转换为 Promise 方法；就是那种函数签名没有使用 async, 通过回调函数的方式来处理异步的函数
+将 Nodejs 原生的异步方法转换为 Promise 方法；就是那种函数签名没有使用 async 的异步函数--内部使用阻塞实现
 
 ```js
 const fs = require("fs");
