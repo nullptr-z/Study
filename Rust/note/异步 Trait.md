@@ -12,5 +12,11 @@ Pin 类型通常与 Future 和异步编程一起使用，但它也可以用于�
 
 对应于同步环境下的 Iterator
 
+不断地从异步数据源中获取数据，直到数据源中没有数据为止。
+
 Iterator .next 是可以确定会返回数据的
 Stream .poll_next 是不确定的，因为 Stream 是异步的，可能需要等待一段时间才能返回数据。
+
+## Sink
+
+向数据源中写入(Send)数据, 但写入的数据不知道什么时候准备好，去绝对.poll_read()是否准备好 ; 例如 tcp socket
