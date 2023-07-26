@@ -1,3 +1,8 @@
+# postgres 更改密码
+
+> sudo -u postgres psql
+> postgres=# ALTER USER postgres WITH PASSWORD 'new_password';
+
 ## 安装
 
 ```shell
