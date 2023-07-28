@@ -41,6 +41,20 @@ drop database test;
 \c database_name
 ````
 
+## 常用命令
+
+一下命令运行在 postgres cli
+
+```shell
+\c database_name # 切换数据库
+\l # 查看数据库里列表
+\d # 查看当前数据库所有表
+\d table_name # 查看表结构
+\du # 查看用户列表
+\d* # *星号代表还有很多操作，pgcli提示查看
+\h select # 查看 select 命令帮助
+\q # 退出
+\? # 查看所有命令帮助,包括以上命令的说明
 ```
 
 ## 表字段常见类型
@@ -67,7 +81,8 @@ drop database test;
 > 其他类型
 
 - bool 布尔类型
-```
+
+````
 
 ## 备份/恢复库
 
@@ -77,19 +92,4 @@ pg_dump source_db -> source_db.bak # 备份数据库
 pg_dumpall > source_db.bak # 备份所有数据库
 
 psql -f source_db.bak < database # 恢复数据库
-```
-
-## 常用命令
-
-一下命令运行在 postgres cli
-
-```shell
-\c database_name # 切换数据库
-\l # 查看数据库里列表
-\d # 查看当前数据库所有表
-\d table_name # 查看表结构
-\du # 查看用户列表
-\h select # 查看 select 命令帮助
-\q # 退出
-\? # 查看所有命令帮助,包括以上命令的说明
-```
+````
