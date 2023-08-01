@@ -39,6 +39,10 @@ Trait Object 的底层逻辑就是胖指针`{ ptr, meta }`:
 > 实际普通的结构(struct)，在内存中也是如此，不过编译时就是已知成员变量、方法所在地址的
 > [Trait Object](./快速回忆/trait%20object.png)
 
+## FromStr
+
+是 Rust 标准库定义的 trait，实现它之后，就可以调用字符串的 parse() 泛型函数，将字符串转换成实现的相应格式。
+
 ## From/tryFrom
 
 将目标类型转到本类型

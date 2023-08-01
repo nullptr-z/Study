@@ -19,4 +19,4 @@ Stream .poll_next 是不确定的，因为 Stream 是异步的，可能需要等
 
 ## Sink
 
-向数据源中写入(Send)数据, 但写入的数据不知道什么时候准备好，去绝对.poll_read()是否准备好 ; 例如 tcp socket
+向数据源中写入(Send)数据, 但写入的数据不知道什么时候准备好，去读.poll_read()是否准备好 ; 例如读 tcp socket
