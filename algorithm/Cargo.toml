@@ -9,10 +9,6 @@ edition = "2021"
 rand = "0.8.5"
 anyhow="1.0.62"
 
-
-# [workspace]
-# members = [
-#   "./search_struct",
-#   "./solve",
-#   "./sort"
-# ]
+# [[bin]]
+# name="leetcode_63"
+# path="src/leetcode_63.rs"
