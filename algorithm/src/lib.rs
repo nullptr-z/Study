@@ -7,6 +7,7 @@ mod search_struct;
 
 mod leetcode_63;
 mod leetcode_70;
+mod leetcode_746;
 mod offer06;
 mod solve;
 mod sort;
