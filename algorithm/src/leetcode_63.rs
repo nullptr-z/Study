@@ -28,14 +28,19 @@ impl Solution {
         };
 
         let n = obstacle_grid[0].len();
+        // 保存的是上一行数据
         let mut dp = vec![0; n];
         dp[0] = 1;
 
         for row in obstacle_grid.iter() {
+            // println!("【 dp 】==> {:?}", dp);
             for (n_idx, &val) in row.iter().enumerate() {
                 if val == 1 {
+                    // 1为障碍
                     dp[n_idx] = 0;
                 } else if n_idx > 0 {
+                    // 当前位置=当前行前一列 + 上一行同列； 效果等同于[r][l-1] + [r-1][l]
+                    // dp[n_idx - 1]是同行前一列, dp[n_idx]就是上一行数据同列值
                     dp[n_idx] += dp[n_idx - 1];
                 }
             }
