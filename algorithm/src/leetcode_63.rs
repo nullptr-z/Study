@@ -33,7 +33,6 @@ impl Solution {
         dp[0] = 1;
 
         for row in obstacle_grid.iter() {
-            // println!("【 dp 】==> {:?}", dp);
             for (n_idx, &val) in row.iter().enumerate() {
                 if val == 1 {
                     // 1为障碍
@@ -44,9 +43,9 @@ impl Solution {
                     dp[n_idx] += dp[n_idx - 1];
                 }
             }
+            println!("【 dp 】==> {:?}", dp);
         }
 
-        println!("【 dp 】==> {:?}", dp);
         dp[n - 1]
     }
 
@@ -158,7 +157,7 @@ mod tests {
         let test_vec = vec![
             vec![0, 0, 0, 0],
             vec![0, 0, 0, 0],
-            vec![0, 0, 0, 0],
+            vec![0, 0, 1, 0],
             vec![0, 1, 0, 0],
             vec![0, 0, 0, 0],
         ];
