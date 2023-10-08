@@ -4,15 +4,19 @@ pub struct Solution;
 
 impl Solution {
     pub fn min_cost_climbing_stairs(cost: Vec<i32>) -> i32 {
-        let mut a1 = cost[0];
-        let mut a2 = cost[1];
+        let mut pre_min = cost[0];
+        let mut current_min = cost[1];
         for i in 2..cost.len() {
-            let val = (a1 + cost[i]).min(a2 + cost[i]);
-            a1 = a2;
-            a2 = val;
+            // pre_min = [i-2]轮那一次的值, current_min = [i-1]轮那一次的值
+            // 最新一轮中，累计后的最小值
+            let sum_min = (pre_min + cost[i]).min(current_min + cost[i]);
+            println!("【 pre_min 】==> {:?},{},{}", pre_min, current_min, sum_min);
+            pre_min = current_min;
+            current_min = sum_min;
         }
 
-        a1.min(a2)
+        println!("{},{}", pre_min, current_min);
+        pre_min.min(current_min)
     }
 
     pub fn min_cost_climbing_stairs_3(mut costs: Vec<i32>) -> i32 {
