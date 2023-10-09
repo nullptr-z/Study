@@ -10,12 +10,10 @@ impl Solution {
             // pre_min = [i-2]轮那一次的值, current_min = [i-1]轮那一次的值
             // 最新一轮中，累计后的最小值
             let sum_min = (pre_min + cost[i]).min(current_min + cost[i]);
-            println!("【 pre_min 】==> {:?},{},{}", pre_min, current_min, sum_min);
             pre_min = current_min;
             current_min = sum_min;
         }
 
-        println!("{},{}", pre_min, current_min);
         pre_min.min(current_min)
     }
 
