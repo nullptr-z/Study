@@ -36,6 +36,7 @@ impl Solution {
         0
     }
 
+    // 从终点向起点迭代，选择从上一步回到这一步小的那个方向，抛弃大的那个
     pub fn min_path_sums(grid: Vec<Vec<i32>>) -> i32 {
         let mm = grid.len();
         let nn = grid[0].len();
