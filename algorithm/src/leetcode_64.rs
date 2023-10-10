@@ -3,7 +3,40 @@
 pub struct Solution;
 
 impl Solution {
+    // 走到两个位置所需要的步数是一样的,下方，右方
+    // 将下方和右边的累积值对比，记录步数值小的那个
     pub fn min_path_sum(grid: Vec<Vec<i32>>) -> i32 {
+        let rows = grid.len();
+        let cols = grid[0].len();
+
+        let mut dp = vec![i32::MAX; cols + 1];
+        dp[1] = 0;
+
+        for row in grid.iter() {
+            for col_idx in 0..cols {
+                dp[col_idx + 1] = dp[col_idx].min(dp[col_idx + 1]) + row[col_idx];
+            }
+        }
+
+        dp[cols]
+    }
+
+    pub fn min_path_sumt(grid: Vec<Vec<i32>>) -> i32 {
+        let m = grid.len();
+        let n = grid[0].len();
+
+        let mut dp = vec![n * m];
+
+        for (r, r_arr) in grid.iter().rev().enumerate() {
+            for (l, val) in r_arr.iter().rev().enumerate() {
+                println!("【 val 】==> {:?}，{}，{}", val, r, l);
+            }
+        }
+
+        0
+    }
+
+    pub fn min_path_sums(grid: Vec<Vec<i32>>) -> i32 {
         let mm = grid.len();
         let nn = grid[0].len();
 
