@@ -8,6 +8,7 @@ mod search_struct;
 mod leetcode_198;
 mod leetcode_62;
 mod leetcode_63;
+mod leetcode_64;
 mod leetcode_70;
 mod leetcode_740;
 mod leetcode_746;
