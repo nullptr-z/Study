@@ -14,6 +14,7 @@ mod leetcode_64;
 mod leetcode_70;
 mod leetcode_740;
 mod leetcode_746;
+mod leetcode_931;
 mod offer06;
 mod solve;
 mod sort;

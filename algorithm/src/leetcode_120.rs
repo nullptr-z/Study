@@ -20,15 +20,6 @@ impl Solution {
     }
 }
 
-fn pack(arr: Vec<i32>) -> Vec<i32> {
-    let mut pack_arr = vec![0; arr.len() - 1];
-    for i in 0..arr.len() - 1 {
-        pack_arr[i] = arr[i] + arr[i + 1];
-    }
-
-    pack_arr
-}
-
 #[cfg(test)]
 mod tests {
     use super::Solution;
