@@ -29,7 +29,7 @@ impl Solution {
         }
 
         let result = String::from_utf8(chart[range].to_vec()).unwrap();
-        println!("【 result 】==> {:?}", result);
+        // println!("【 result 】==> {:?}", result);
 
         result
     }
