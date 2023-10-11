@@ -5,6 +5,7 @@ use rand::Rng;
 mod query;
 mod search_struct;
 
+mod leetcode_120;
 mod leetcode_198;
 mod leetcode_221;
 mod leetcode_62;
