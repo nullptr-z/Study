@@ -23,8 +23,7 @@ impl Solution {
             for l in 1..=square {
                 let val = nums[r - 1];
                 if val <= (l as i32) {
-                    dp[r][l] =
-                        dp[r - 1][l].max(dp[r - 1][((l as i32) - val) as usize] + nums[r - 1]);
+                    dp[r][l] = dp[r - 1][l].max(dp[r - 1][((l as i32) - val) as usize] + val);
                 } else {
                     dp[r][l] = dp[r - 1][l];
                 }
