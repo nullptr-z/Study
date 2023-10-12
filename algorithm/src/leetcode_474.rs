@@ -89,11 +89,6 @@ impl Solution {
             let val = decimal_to_quaternary_tuple(i, nn);
             pack_vol[i] = val
         }
-        // println!("pack： {:?}", pack_vol);
-
-        // let mut dp = vec![vec![(0, 0); col]; row];
-        // let mut dp_map = HashMap::<String, (i32, i32)>::new();
-        // let mut dp = vec![vec![vec![0; n as usize]; m as usize]; row];
         let mut dp = vec![vec![(0, 0, 0); col]; row];
 
         for r in 1..row {
@@ -118,10 +113,6 @@ impl Solution {
                 dp[r][l] = dp[r - 1][l];
             }
         }
-
-        // for (i, item) in dp.iter().enumerate() {
-        //     println!("pd({}): {:?}", i, item);
-        // }
 
         let result = dp.last().unwrap().last().unwrap();
         // println!("【 result 】==> {:?}", result);
