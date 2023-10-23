@@ -14,8 +14,7 @@ impl Solution {
         let mut result = Vec::with_capacity(matrix.len());
         let mut arrow = Arrow::Right;
 
-        let mut row_ptr = 0;
-        let mut col_ptr = 0;
+        let (mut row_ptr, mut col_ptr) = (0, 0);
 
         while result.len() < len {
             match arrow {
