@@ -8,7 +8,7 @@ impl Solution {
     pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool {
         let mut group_row = 0;
 
-        let mut map = HashMap::new(); // 记录3x3的小数数组
+        let mut map = HashMap::new(); // 记录3x3的小数数组，也可以使用三维数组
         let mut rows = [[0; 9]; 9]; // 行记录
         let mut columns = [[0; 9]; 9]; // 列记录
 
