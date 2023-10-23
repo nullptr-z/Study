@@ -20,6 +20,7 @@ mod leetcode_383;
 mod leetcode_416;
 mod leetcode_474;
 mod leetcode_48;
+mod leetcode_49;
 mod leetcode_5;
 mod leetcode_516;
 mod leetcode_518;
