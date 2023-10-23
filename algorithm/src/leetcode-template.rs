@@ -1,7 +1,5 @@
 //
 
-pub struct Solution;
-
 impl Solution {
     pub fn func_name() -> i32 {
         0
@@ -17,3 +15,5 @@ mod tests {
         Solution::func_name();
     }
 }
+
+pub struct Solution;
