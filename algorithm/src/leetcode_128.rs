@@ -22,6 +22,9 @@ impl Solution {
             map.insert(*value, val);
             map.insert(value - pre, val);
             map.insert(value + next, val);
+            // println!("【 value - pre 】==> {:?}", value - pre);
+            // println!("【 value + nex 】==> {:?}", value + next);
+            // println!("【 map 】==>{} {:?}", value, map);
         }
 
         max
@@ -34,7 +37,8 @@ mod tests {
 
     #[test]
     fn should_work() {
-        Solution::longest_consecutive(vec![100, 4, 200, 1, 3, 2]);
+        // 最后的2会取到1和4
+        // Solution::longest_consecutive(vec![100, 4, 200, 1, 3, 2]);
 
         Solution::longest_consecutive(vec![0, 3, 7, 2, 5, 8, 4, 6, 0, 1]);
     }
