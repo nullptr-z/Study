@@ -4,7 +4,7 @@ pub struct Solution;
 
 impl Solution {
     pub fn merge(intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
-        let mut result: Vec<Vec<i32>> = Default::default();
+        let mut result: Vec<Vec<i32>> = Vec::new();
 
         let mut max = 0;
         let mut arr = vec![-1; 10001];
@@ -41,7 +41,7 @@ impl Solution {
     }
 
     // 需要排序
-    pub fn merges(mut intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+    pub fn mergesc(mut intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
         let mut result: Vec<Vec<i32>> = Default::default();
 
         intervals.sort_by(|f, b| b[1].cmp(&f[1]));
@@ -56,6 +56,29 @@ impl Solution {
                     m[0] = m[0].min(item[0]);
                 }
                 None => result.push(item.clone()),
+            }
+        }
+
+        result
+    }
+
+    // 排序优化版
+    pub fn merges(intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        if intervals.is_empty() {
+            return Vec::new();
+        }
+
+        let mut intervals = intervals;
+        intervals.sort_by_key(|interval| interval[0]);
+
+        let mut result = vec![intervals[0].clone()];
+
+        for interval in intervals.into_iter().skip(1) {
+            let last = result.last_mut().unwrap();
+            if interval[0] <= last[1] {
+                last[1] = last[1].max(interval[1]);
+            } else {
+                result.push(interval);
             }
         }
 
