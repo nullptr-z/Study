@@ -7,7 +7,7 @@ impl Solution {
         let mut result: Vec<Vec<i32>> = Default::default();
 
         let mut max = 0;
-        let mut arr = vec![-1; 10];
+        let mut arr = vec![-1; 10001];
         for item in intervals.iter() {
             max = max.max(item[1]);
             let idx = item[0] as usize;
@@ -36,6 +36,28 @@ impl Solution {
             i += 1;
         }
         // println!("【 arr 】==> {:?}", arr);
+
+        result
+    }
+
+    // 需要排序
+    pub fn merges(mut intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        let mut result: Vec<Vec<i32>> = Default::default();
+
+        intervals.sort_by(|f, b| b[1].cmp(&f[1]));
+
+        for item in intervals.iter() {
+            let range = result.iter_mut().find(|m| {
+                return item[1] >= m[0] && item[0] <= m[1];
+            });
+            match range {
+                Some(m) => {
+                    m[1] = m[1].max(item[1]);
+                    m[0] = m[0].min(item[0]);
+                }
+                None => result.push(item.clone()),
+            }
+        }
 
         result
     }
