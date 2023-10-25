@@ -1,5 +1,3 @@
-//
-
 impl Solution {
     pub fn func_name() -> i32 {
         0
