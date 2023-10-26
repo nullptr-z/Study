@@ -7,6 +7,8 @@ struct LRUCache {
 impl LRUCache {
     fn new(capacity: i32) -> Self {
         Self {
+            // 考虑Hash表和有序结构
+            // 一般最优选择是hash + DLink
             cache: vec![None; 100001],
             operator_count: 0,
             capacity: capacity,

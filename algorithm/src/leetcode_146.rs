@@ -2,7 +2,9 @@ use std::collections::BTreeMap;
 
 #[derive(Debug)]
 struct LRUCache {
+    // 考虑Hash表和有序结构
     cache: Vec<Option<(i32, i32)>>,
+    // 一般最优选择是hash + DLink,
     activity_level: BTreeMap<i32, i32>,
     operator_count: i32,
     capacity: i32,
