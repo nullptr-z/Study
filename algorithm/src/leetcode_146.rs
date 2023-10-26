@@ -8,6 +8,8 @@ struct LRUCache {
 impl LRUCache {
     fn new(capacity: i32) -> Self {
         Self {
+            // 考虑Hash表和有序结构
+            // 一般最优选择是hash + DLink
             cache: vec![None; 100001],
             operator_count: 0,
             capacity: capacity,
@@ -28,10 +30,7 @@ impl LRUCache {
     fn put(&mut self, key: i32, value: i32) {
         self.operator_count += 1;
 
-        // let that = &mut self.cache[key as usize];
         if self.cache[key as usize].is_some() {
-            // that.unwrap().0 = value;
-            // that.unwrap().1 = self;
             self.cache[key as usize] = Some((value, self.operator_count));
             return;
         }
