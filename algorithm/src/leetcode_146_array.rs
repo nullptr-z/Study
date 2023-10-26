@@ -1,24 +1,15 @@
-use std::collections::BTreeMap;
-
-#[derive(Debug)]
 struct LRUCache {
     cache: Vec<Option<(i32, i32)>>,
-    activity_level: BTreeMap<i32, i32>,
     operator_count: i32,
     capacity: i32,
-    min: (i32, i32),
 }
 
 impl LRUCache {
     fn new(capacity: i32) -> Self {
         Self {
-            // 考虑Hash表和有序结构
-            // 一般最优选择是hash + DLink
             cache: vec![None; 100001],
-            activity_level: BTreeMap::new(),
             operator_count: 0,
             capacity: capacity,
-            min: (0, 0),
         }
     }
 
@@ -26,15 +17,6 @@ impl LRUCache {
         self.operator_count += 1;
 
         if let Some(item) = self.cache[key as usize] {
-            self.activity_level
-                .remove(&self.cache[key as usize].unwrap().1);
-            self.activity_level.insert(self.operator_count, key);
-
-            let f = self.activity_level.iter().next();
-            let k = *f.unwrap().0;
-            let v = *f.unwrap().1;
-            self.min = (k, v);
-
             self.cache[key as usize] = Some((item.0, self.operator_count));
             return item.0;
         }
@@ -46,43 +28,25 @@ impl LRUCache {
         self.operator_count += 1;
 
         if self.cache[key as usize].is_some() {
-            self.activity_level
-                .remove(&self.cache[key as usize].unwrap().1);
-            self.activity_level.insert(self.operator_count, key);
-
-            let f = self.activity_level.iter().next();
-            let k = *f.unwrap().0;
-            let v = *f.unwrap().1;
-            self.min = (k, v);
-
             self.cache[key as usize] = Some((value, self.operator_count));
             return;
         }
         if self.capacity <= 0 {
-            // if let Some((key, value)) = self.activity_level.first_key_value() {
-            //     self.activity_level.remove_entry(key);
-            //     self.cache[*value as usize] = None;
-            //     self.capacity += 1;
-            // }
-
-            // if let Some((&key, value)) = self.activity_level.clone().iter().next() {
-            //     self.activity_level.remove(&key);
-            //     self.cache[*value as usize] = None;
-            //     self.capacity += 1;
-            // }
-            let min = self.min;
-            self.activity_level.remove(&min.0);
-            self.cache[min.1 as usize] = None;
+            let mut min = (i32::MAX, i32::MAX);
+            let mut idx: usize = 0;
+            for (i, item) in self.cache.iter().enumerate() {
+                if let Some(m) = item {
+                    if m.1 < min.1 {
+                        min = m.clone();
+                        idx = i
+                    }
+                }
+            }
+            self.cache[idx] = None;
+            self.capacity += 1;
         }
 
         self.capacity -= 1;
-        self.activity_level.insert(self.operator_count, key);
-
-        let f = self.activity_level.iter().next();
-        let k = *f.unwrap().0;
-        let v = *f.unwrap().1;
-        self.min = (k, v);
-
         self.cache[key as usize] = Some((value, self.operator_count))
     }
 }
