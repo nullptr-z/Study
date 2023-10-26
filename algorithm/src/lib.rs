@@ -34,6 +34,7 @@ mod leetcode_518;
 mod leetcode_54;
 mod leetcode_56;
 mod leetcode_57;
+mod leetcode_61;
 mod leetcode_62;
 mod leetcode_63;
 mod leetcode_64;
