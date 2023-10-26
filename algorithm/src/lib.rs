@@ -10,6 +10,7 @@ mod list_utils;
 mod leetcode_120;
 mod leetcode_128;
 mod leetcode_139;
+mod leetcode_146;
 mod leetcode_19;
 mod leetcode_198;
 mod leetcode_2;
