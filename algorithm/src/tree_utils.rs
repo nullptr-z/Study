@@ -18,6 +18,18 @@ impl TreeNode {
     }
 }
 
-pub fn arrayToTree(array: Vec<i32>) -> TreeNode {
-    todo!()
+pub fn arrayToTree(array: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+    let mut tree = TreeNode::new(0);
+    for (i, item) in array.iter().enumerate() {
+        tree.val = *item;
+    }
+
+    Some(Rc::new(RefCell::new(tree)))
 }
+
+// pub fn generate_tree(tree: &mut Option<Rc<RefCell<TreeNode>>>, array: &Vec<i32>) {
+
+//     for (i, item) in array.iter().enumerate() {
+//         tree.val = *item;
+//     }
+// }

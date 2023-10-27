@@ -1,7 +1,6 @@
 use std::cell::RefCell;
 use std::rc::Rc;
 
-use crate::tree_utils::TreeNode;
 impl Solution {
     pub fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         0
@@ -25,3 +24,5 @@ mod tests {
 }
 
 pub struct Solution;
+
+use crate::tree_utils::TreeNode;
