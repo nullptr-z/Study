@@ -16,11 +16,7 @@ mod tests {
     use super::Solution;
 
     #[test]
-    fn should_work() {
-        Solution::max_depth(Some(Rc::new(RefCell::new(arrayToTree(vec![
-            3, 9, 20, -1, -1, 15, 7,
-        ])))));
-    }
+    fn should_work() {}
 }
 
 pub struct Solution;
