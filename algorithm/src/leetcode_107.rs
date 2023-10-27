@@ -3,8 +3,8 @@ use std::collections::VecDeque;
 use std::rc::Rc;
 
 impl Solution {
-    pub fn level_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
-        let mut result: Vec<Vec<i32>> = Vec::new();
+    pub fn level_order_bottom(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
+        let mut result: VecDeque<Vec<i32>> = VecDeque::new();
         let mut queue = VecDeque::<Rc<RefCell<TreeNode>>>::new();
         if let Some(root) = root {
             queue.push_back(root);
@@ -28,14 +28,14 @@ impl Solution {
             level_size -= 1;
             if level_size == 0 {
                 if items.len() > 0 {
-                    result.push(items.clone());
+                    result.push_front(items.clone());
                 }
                 items.resize(0, 0);
                 level_size = queue.len();
             }
         }
 
-        result
+        result.into()
     }
 }
 
