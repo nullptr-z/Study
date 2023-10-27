@@ -19,12 +19,24 @@ impl TreeNode {
 }
 
 pub fn arrayToTree(array: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
-    let mut tree = TreeNode::new(0);
-    for (i, item) in array.iter().enumerate() {
-        tree.val = *item;
+    let mut index = 0;
+    array_to_tree(&array, &mut index)
+}
+
+pub fn array_to_tree(array: &Vec<i32>, index: &mut usize) -> Option<Rc<RefCell<TreeNode>>> {
+    if *index >= array.len() || array[*index] == -1 {
+        *index += 1;
+        return None;
     }
 
-    Some(Rc::new(RefCell::new(tree)))
+    let val = array[*index];
+    *index += 1;
+
+    let node = Rc::new(RefCell::new(TreeNode::new(val)));
+    node.borrow_mut().left = array_to_tree(array, index);
+    node.borrow_mut().right = array_to_tree(array, index);
+
+    Some(node)
 }
 
 // pub fn generate_tree(tree: &mut Option<Rc<RefCell<TreeNode>>>, array: &Vec<i32>) {
