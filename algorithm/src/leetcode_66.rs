@@ -1,18 +1,8 @@
 impl Solution {
     pub fn plus_one(mut digits: Vec<i32>) -> Vec<i32> {
-        let mut flag = 0;
-        let len = digits.len() - 1;
-
-        if digits[len] == 9 {
-            flag = 1;
-            digits[len] = 0
-        } else {
-            digits[len] += 1;
-            return digits;
-        }
-
+        let mut flag = 1;
         digits.reverse();
-        for i in 1..digits.len() {
+        for i in 0..digits.len() {
             let sum = digits[i] + flag;
             flag = 0;
             if sum > 9 {
@@ -30,8 +20,6 @@ impl Solution {
             digits.push(flag);
         }
         digits.reverse();
-
-        println!("【 digits 】==> {:?}", digits);
 
         digits
     }
