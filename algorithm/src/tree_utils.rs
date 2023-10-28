@@ -30,18 +30,12 @@ pub fn array_to_tree(array: &Vec<i32>, index: &mut usize) -> Option<Rc<RefCell<T
     }
 
     let val = array[*index];
-    *index += 1;
 
     let node = Rc::new(RefCell::new(TreeNode::new(val)));
+    *index += 1;
     node.borrow_mut().left = array_to_tree(array, index);
+    *index += 1;
     node.borrow_mut().right = array_to_tree(array, index);
 
     Some(node)
 }
-
-// pub fn generate_tree(tree: &mut Option<Rc<RefCell<TreeNode>>>, array: &Vec<i32>) {
-
-//     for (i, item) in array.iter().enumerate() {
-//         tree.val = *item;
-//     }
-// }
