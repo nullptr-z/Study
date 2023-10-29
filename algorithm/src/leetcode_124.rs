@@ -13,6 +13,7 @@ impl Solution {
         0
     }
 
+    // 关键点：cur也就是根层不处理负数情况，交给父级处理
     fn max_path_sum_helper(root: &Rc<RefCell<TreeNode>>, max: &mut i32) -> i32 {
         let node = root.borrow();
         let val = node.val;
