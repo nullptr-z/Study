@@ -16,10 +16,9 @@ impl BSTIterator {
     }
 
     fn next(&mut self) -> i32 {
-        let mut cur = self.cur.take();
-        while let Some(node) = cur {
+        while let Some(node) = self.cur.take() {
             self.stack.push(node.clone());
-            cur = node.borrow().left.clone();
+            self.cur = node.borrow().left.clone();
         }
 
         if let Some(top) = self.stack.pop() {
