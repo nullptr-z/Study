@@ -13,12 +13,7 @@ impl Solution {
         0
     }
 
-    fn has_path_sum_helper(
-        root: &Rc<RefCell<TreeNode>>,
-        // map: HashMap<i32, String>,
-        cur_val: i32,
-        sum: &mut i32,
-    ) {
+    fn has_path_sum_helper(root: &Rc<RefCell<TreeNode>>, cur_val: i32, sum: &mut i32) {
         let node = root.borrow();
 
         if node.left.is_none() && node.right.is_none() {
