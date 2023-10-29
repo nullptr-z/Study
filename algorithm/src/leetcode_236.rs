@@ -54,6 +54,25 @@ impl Solution {
 
         right || left || flag
     }
+
+    pub fn lowest_common_ancestors(
+        root: Option<Rc<RefCell<TreeNode>>>,
+        p: Option<Rc<RefCell<TreeNode>>>,
+        q: Option<Rc<RefCell<TreeNode>>>,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
+        if let Some(x) = root.as_ref() {
+            if Rc::ptr_eq(&x, &p.as_ref().unwrap()) || Rc::ptr_eq(&x, &q.as_ref().unwrap()) {
+                return root;
+            }
+            let l = Self::lowest_common_ancestor(x.borrow().left.clone(), p.clone(), q.clone());
+            let r = Self::lowest_common_ancestor(x.borrow().right.clone(), p.clone(), q.clone());
+            if l.is_some() && r.is_some() {
+                return root;
+            }
+            return if l.is_some() { l } else { r };
+        }
+        None
+    }
 }
 
 #[cfg(test)]
