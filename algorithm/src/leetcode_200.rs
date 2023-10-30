@@ -7,8 +7,7 @@ impl Solution {
         let mut stack = Vec::new();
         for i in 0..m {
             for j in 0..n {
-                let val = grid[i][j];
-                if val == '1' {
+                if grid[i][j] == '1' {
                     stack.push((i, j));
                     grid[i][j] = '0';
                     count += 1;
