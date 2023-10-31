@@ -6,7 +6,6 @@ impl Solution {
 
         while start < end {
             let i = (start + end) / 2;
-            println!("【 i 】==> {:?}", i);
 
             if matrix[i][0] == target {
                 return true;
@@ -15,7 +14,6 @@ impl Solution {
             } else {
                 end = i;
             }
-            println!("【 start 】==> {:?} {}", start, end);
         }
 
         if start == 0 {
