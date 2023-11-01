@@ -23,6 +23,7 @@ mod leetcode_124;
 mod leetcode_128;
 mod leetcode_129;
 mod leetcode_139;
+mod leetcode_14;
 mod leetcode_144;
 mod leetcode_145;
 mod leetcode_146;
