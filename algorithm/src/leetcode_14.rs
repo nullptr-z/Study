@@ -27,25 +27,16 @@ impl Solution {
 
         let mut i = 0;
         loop {
-            let mut flag = true;
             if i >= chats[0].len() {
                 break;
             }
             let ch = chats[0][i];
             for item_str in chats.iter() {
-                if i >= item_str.len() {
-                    flag = false;
-                    break;
-                } else {
-                    flag = flag && item_str[i] == ch;
+                if i >= item_str.len() || item_str[i] != ch {
+                    return s.to_string();
                 }
             }
-
-            if flag {
-                s += &ch.to_string();
-            } else {
-                break;
-            }
+            s += &ch.to_string();
 
             i += 1;
         }
