@@ -2,16 +2,17 @@ impl Solution {
     pub fn length_of_last_word(s: String) -> i32 {
         let mut b = s.as_bytes().to_owned();
         b.reverse();
-        let mut range = (0, 0);
+        let mut count = 0;
+
         for val in b {
             if val > 48 {
-                range.0 += 1;
-            } else if range.0 > 0 {
+                count += 1;
+            } else if count > 0 {
                 break;
             }
         }
 
-        range.0 - range.1
+        count
     }
 }
 
