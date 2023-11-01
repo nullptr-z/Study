@@ -26,8 +26,8 @@ impl Solution {
         }
 
         let mut l = 0;
-        let mut r = nums.len();
-        while l < r {
+        let mut r = nums.len() - 1;
+        while l < (r + 1) {
             let mid = l + (r - l) / 2;
             let mid_val = nums[mid];
 
@@ -35,14 +35,15 @@ impl Solution {
                 l = mid + 1;
             } else {
                 if mid > 0 {
-                    r = mid;
+                    r = mid - 1;
                 } else {
-                    r = l
+                    r = l;
+                    break;
                 }
             }
         }
-        if l > 0 && nums[l - 1] == target {
-            result[1] = (l - 1) as i32;
+        if nums[r] == target {
+            result[1] = r as i32;
         }
 
         result
@@ -57,8 +58,8 @@ mod tests {
     fn should_work() {
         // let result = Solution::search_range(vec![5, 7, 7, 8, 8, 10], 8);
         // let result = Solution::search_range(vec![1, 3], 2);
-        // let result = Solution::search_range(vec![1], 0);
-        let result = Solution::search_range(vec![1], 1);
+        let result = Solution::search_range(vec![1], 0);
+        // let result = Solution::search_range(vec![1], 1);
         // let result = Solution::search_range(vec![2, 2], 3);
         println!("【 result 】==> {:?}", result);
     }
