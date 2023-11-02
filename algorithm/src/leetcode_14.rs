@@ -28,7 +28,7 @@ impl Solution {
         let mut i = 0;
         loop {
             if i >= chats[0].len() {
-                break;
+                return s.to_string();
             }
             let ch = chats[0][i];
             for item_str in chats.iter() {
@@ -40,8 +40,6 @@ impl Solution {
 
             i += 1;
         }
-
-        s.to_string()
     }
 }
 
