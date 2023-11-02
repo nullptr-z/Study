@@ -34,6 +34,7 @@ mod leetcode_169;
 mod leetcode_172;
 mod leetcode_173;
 mod leetcode_173_stack;
+mod leetcode_189;
 mod leetcode_19;
 mod leetcode_198;
 mod leetcode_199;

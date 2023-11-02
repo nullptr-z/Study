@@ -27,6 +27,7 @@ impl Solution {
             start = 0;
         }
         if start <= needle.len() - 1 {
+            // 如果==说明start=0
             return -1;
         }
 
