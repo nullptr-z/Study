@@ -11,14 +11,11 @@ impl Solution {
         if byt.len() > 0 {
             let rets = Self::iter(&byt[1..]);
             for cur in get_letters(byt[0]) {
-                // let mut s = cur.to_string();
-                if rets.len() > 0 {
-                    for next in &rets {
-                        // s += next;
-                        ret.push(format!("{}{}", cur, next))
-                    }
-                } else {
+                if rets.len() == 0 {
                     ret.push(cur.to_string())
+                }
+                for next in &rets {
+                    ret.push(format!("{}{}", cur, next))
                 }
             }
         }
