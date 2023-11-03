@@ -1,25 +1,21 @@
 impl Solution {
     pub fn is_subsequence(s: String, t: String) -> bool {
-        let mut s = s.as_bytes();
-        let mut i = 0;
-        if s.len() > 0 {
-            for org in t.as_bytes() {
-                if *org == s[i] {
-                    i += 1;
-                }
-                if i == s.len() {
-                    break;
-                }
-            }
-        } else {
+        if s.len() < 1 {
             return true;
         }
 
-        if i < s.len() {
-            return false;
+        let s = s.as_bytes();
+        let mut i = 0;
+        for org in t.as_bytes() {
+            if *org == s[i] {
+                i += 1;
+            }
+            if i == s.len() {
+                return true;
+            }
         }
 
-        true
+        false
     }
 }
 
