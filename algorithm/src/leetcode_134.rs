@@ -34,7 +34,7 @@ impl Solution {
         start as i32
     }
 
-    // 效率最高，最小和的下一个位置就是解
+    // 效率最高，最小和的下一个位置就是问题解
     pub fn can_complete_circuit_optimization(gas: Vec<i32>, cost: Vec<i32>) -> i32 {
         let mut sum = 0;
         let mut min_sum_index = 0;
@@ -55,6 +55,31 @@ impl Solution {
             0
         } else {
             ((min_sum_index + 1) % len) as i32 // 获取下一个位置
+        }
+    }
+
+    // 直接计算问题解下标，略微慢一点
+    pub fn can_complete_circuit(gas: Vec<i32>, cost: Vec<i32>) -> i32 {
+        let len = gas.len();
+        let mut diff = 0;
+        let mut total_diff = 0;
+        let mut start = 0;
+
+        for i in 0..len {
+            let current_diff = gas[i] - cost[i];
+            diff += current_diff;
+            total_diff += current_diff;
+
+            if diff < 0 {
+                diff = 0;
+                start = i + 1;
+            }
+        }
+
+        if total_diff >= 0 {
+            start as i32
+        } else {
+            -1
         }
     }
 
@@ -102,30 +127,6 @@ impl Solution {
         }
 
         start as i32
-    }
-
-    pub fn can_complete_circuit(gas: Vec<i32>, cost: Vec<i32>) -> i32 {
-        let len = gas.len();
-        let mut diff = 0;
-        let mut total_diff = 0;
-        let mut start = 0;
-
-        for i in 0..len {
-            let current_diff = gas[i] - cost[i];
-            diff += current_diff;
-            total_diff += current_diff;
-
-            if diff < 0 {
-                diff = 0;
-                start = i + 1;
-            }
-        }
-
-        if total_diff >= 0 {
-            start as i32
-        } else {
-            -1
-        }
     }
 }
 
