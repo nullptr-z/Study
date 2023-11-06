@@ -9,6 +9,7 @@ impl Solution {
         ret
     }
 
+    // 实际上应该使用Ac Clone,速度会快很多;但是官方示例没有给只能这样了
     fn sort_lists(head: &Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         if head.is_none() || head.as_ref().unwrap().next.is_none() {
             return head.clone();
@@ -34,6 +35,7 @@ impl Solution {
         Solution::merge_two_lists(left, right)
     }
 
+    // 归并排序
     pub fn merge_two_lists(
         list1: Option<Box<ListNode>>,
         list2: Option<Box<ListNode>>,
