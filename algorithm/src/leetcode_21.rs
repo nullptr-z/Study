@@ -30,8 +30,8 @@ impl Solution {
         }
 
         list.next = match one.is_some() {
-            true => one.clone(),
-            false => two.clone(),
+            true => one.to_owned(),
+            false => two.to_owned(),
         };
 
         // *list = None; //如果使用了`原地修改`的方案,需要把最后`新建next = 0`清除
