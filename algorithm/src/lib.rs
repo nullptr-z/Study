@@ -36,6 +36,7 @@ mod leetcode_148;
 mod leetcode_151;
 mod leetcode_153;
 mod leetcode_162;
+mod leetcode_167;
 mod leetcode_169;
 mod leetcode_17;
 mod leetcode_172;
