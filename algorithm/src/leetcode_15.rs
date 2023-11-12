@@ -49,6 +49,7 @@ impl Solution {
     }
 
     /// 超时了，需要想办法解决重复问题
+    /// 解决重复问题的关键就是，对于相同的元素，在返回数组的下标只进行一轮比较
     pub fn three_sums(nums: Vec<i32>) -> Vec<Vec<i32>> {
         if nums.len() < 3 {
             return vec![];

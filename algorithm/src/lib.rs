@@ -17,6 +17,7 @@ mod leetcode_105;
 mod leetcode_106;
 mod leetcode_107;
 mod leetcode_108;
+mod leetcode_11;
 mod leetcode_112;
 mod leetcode_114;
 mod leetcode_120;
