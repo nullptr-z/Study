@@ -6,4 +6,5 @@
 6. call `userinit()` jump to kernel/proc.c:212, the is first process
 7. run initcode user/initcode.S：exec("/init") user/init.c:15, open file description 0、1、2
 
-xv6-book 第二章
+========================================
+0x1000 Boot ROM，这是 RISC-V 加电后就立即执行的地方，然后回跳转到 0x8000,我们需要做的就是把操作系统代码写入 0x8000
