@@ -29,6 +29,8 @@
 
 `thread num` 切换到 num 线程去执行
 
+`stepi` 查看 STEP 寄存器
+
 直接回车会执行上一次输入的命令
 
 ## 配置性操作
@@ -43,3 +45,7 @@ set pagination off # 关闭confirm
 
 .gdb 文件：
 也用来写一些 gdb 指令, 第一行写要调试的二进制文件名,`gdb -x *.gdb`
+
+# qemu
+
+info menu: 用于查看页表，看到的是当前模式下的页表
