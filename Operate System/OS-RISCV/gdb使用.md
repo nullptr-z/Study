@@ -12,7 +12,10 @@
 `delete label` 删除断点，不加标签删除所有
 `watch label` 监听标签，出现变化就会输出信息
 
+`x/ni label` 在 label 处打印 n 行指令
+
 `layout [src | asm | reg | split]` 显示源码窗口
+`tui enable` 好像也是打开元源码窗口
 
 `target remote` 链接远程调试
 
@@ -47,5 +50,7 @@ set pagination off # 关闭confirm
 也用来写一些 gdb 指令, 第一行写要调试的二进制文件名,`gdb -x *.gdb`
 
 # qemu
+
+Contrl+A+C: make qemu-gdb 的时候用这个命令进入 cli
 
 info menu: 用于查看页表，看到的是当前模式下的页表
