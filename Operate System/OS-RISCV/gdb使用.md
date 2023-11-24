@@ -6,6 +6,7 @@
 `p label` 打印变量，在变量名后面跟上@2 查看 2 个元素; 还可以打印寄存器 p %eax
 `i locals` 哪些变量可以打印查看
 `i args` 打印 args 信息
+`i r s0` 打印 s0 寄存器信息
 `c` 继续执行，会停在断点
 `b label` 对标签(变量名，函数名)设置为断点
 `b label if i==2` 满足条件才输出信息
@@ -53,4 +54,4 @@ set pagination off # 关闭confirm
 
 Contrl+A+C: make qemu-gdb 的时候用这个命令进入 cli
 
-info menu: 用于查看页表，看到的是当前模式下的页表
+info mem: 用于查看 Page Table，看到的是当前模式下的 PT
