@@ -6,13 +6,15 @@ interrupt：响应各种外围设备 IO
 
 ## 重要的寄存器：
 
-为了安全不能依赖于 32 User reg，_内核不能信任用户空间的任意东西_，所以 Trap 时需要专有 reg
+为了安全不能依赖于 32 User reg，_内核不能信任用户空间的任意东西_，所以 Trap 时需要专有 register
+
+每一个 CPU 核都有独立的 SIE 和 SSTATUS 寄存器
 
 - STVEC: 内核启动时在这里写下 trap 处理程序的入口地址, 每当调用 ecall，它被赋值给 PC
 - SEPC: 当 trap 发生时，RISC-V 会将程序计数器(PC)保存在这里。sret（从 trap 中返回）指令将 sepc 复制到 PC 中。内核可以写 sepc 来控制 sret 的返回到哪里。
 - SSCRATCH: 内核在这里放置了一个 trap frame, 主要用 trampoline 阶段保存一些数据
 - SCAUSE: RISC -V 在这里放了一个[编号](#scause-编号说明)，包含了 trap 发生的原因。
-- SSTATUS: SSTATUS_SIE 启用中断;SPP 控制了 sret 返回到什么模式，U(0) or S(1)。
+- SSTATUS: SSTATUS_SIE 启用/关闭所有中断; SPP 控制了 sret 返回到什么模式，U(0) or S(1)。
 - SIE: 内核可以用它来开、关中断功能，设置对应位;外部中断(位 9)、定时器中断(位 5)、软件中断(位 1)
 - SIP: 查看中断类型
 - STVAL: 保存了触发 page fault 的页虚拟地址
