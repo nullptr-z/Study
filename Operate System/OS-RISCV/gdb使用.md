@@ -13,6 +13,7 @@
 `delete label` 删除断点，不加标签删除所有
 `watch label` 监听标签，出现变化就会输出信息
 
+x/i addrNum 打印地址对应的执行
 `x/ni label` 在 label 处打印 n 行指令
 
 `layout [src | asm | reg | split]` 显示源码窗口
