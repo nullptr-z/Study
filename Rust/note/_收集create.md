@@ -1,9 +1,5 @@
 features = ["full" ] // full features 意为,加载包的全部功能
 
-## derive_builder
-
-在 new 一个参数很多的 structure 时需要填写所有参数很不方便，这个 create 可以让我们只需要提供向提供的，帮我们生成其他缺省值
-
 ## shellexpand
 
 是一个用于展开和解析 shell 风格环境变量和波浪号扩展的库，~波浪符号被解析成系统用户根目录
