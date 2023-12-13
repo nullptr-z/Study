@@ -9,6 +9,9 @@ mod array_utils;
 mod list_utils;
 mod tree_utils;
 
+mod d_27;
+mod d_704;
+
 mod leetcode_101;
 mod leetcode_102;
 mod leetcode_103;
