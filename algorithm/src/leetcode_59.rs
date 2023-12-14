@@ -1,59 +1,53 @@
 impl Solution {
-    pub fn generate_matrix(n: i32) -> Vec<Vec<i32>> {
-        let m = n as usize;
-        let mut matrix = vec![vec![0; m]; m];
+    // `count`是遍历次数，初始为`n-1`
+    /// 每当次数为0，改变高度
+    /// 左右遍历结束，遍历次数减`n -= 1`并且恢复次数，上下遍历恢复次数为n
+    pub fn generate_matrix(mut n: i32) -> Vec<Vec<i32>> {
+        let mut matrix = vec![vec![0; n as usize]; n as usize];
 
         let mut direct: Direct = Direct::Right;
 
-        let mut r = (0) as usize;
-        let mut l = (0) as usize;
-        let mut n = n;
-        let mut count = n;
-        let mut i = 0;
-        while i < (m * m) as i32 && n > 0 {
-            matrix[r][l] = i + 1;
+        let mut row = 0 as usize;
+        let mut col = 0 as usize;
+        let mut count = n - 1;
+
+        for i in 0..(n * n) as i32 {
+            matrix[row][col] = i + 1;
             count -= 1;
 
             let is_change = count == 0;
-            if is_change {
-                match direct {
-                    Direct::Top => {
+            match direct {
+                Direct::Top => {
+                    row -= 1;
+                    if is_change {
                         direct = Direct::Right;
                         count = n;
                     }
-                    Direct::Bottom => {
+                }
+                Direct::Bottom => {
+                    row += 1;
+                    if is_change {
                         direct = Direct::Left;
                         count = n;
                     }
-                    Direct::Right => {
+                }
+                Direct::Right => {
+                    col += 1;
+                    if is_change {
                         n -= 1;
                         count = n;
                         direct = Direct::Bottom;
                     }
-                    Direct::Left => {
+                }
+                Direct::Left => {
+                    col -= 1;
+                    if is_change {
                         n -= 1;
                         count = n;
                         direct = Direct::Top;
                     }
                 }
             }
-
-            match direct {
-                Direct::Top => {
-                    r -= 1;
-                }
-                Direct::Bottom => {
-                    r += 1;
-                }
-                Direct::Right => {
-                    l += 1;
-                }
-                Direct::Left => {
-                    l -= 1;
-                }
-            }
-
-            i += 1;
         }
 
         matrix
