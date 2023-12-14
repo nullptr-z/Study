@@ -10,7 +10,8 @@ mod tests {
 
     #[test]
     fn should_work() {
-        Solution::func_name();
+        let ret = Solution::func_name();
+        println!("【 ret 】==> {:?}", ret);
     }
 }
 
