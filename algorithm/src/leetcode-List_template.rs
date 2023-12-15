@@ -11,7 +11,8 @@ mod tests {
 
     #[test]
     fn should_work() {
-        Solution::sort_list(arrayToList(vec![]));
+        let res = Solution::reverse_list(arrayToList(vec![]));
+        println!("【 ret 】==> {:?}", res);
     }
 }
 
