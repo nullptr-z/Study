@@ -9,6 +9,10 @@ impl ListNode {
     pub fn new(val: i32) -> Self {
         ListNode { next: None, val }
     }
+    #[inline]
+    pub fn new_node(val: i32, next: Option<Box<ListNode>>) -> Self {
+        ListNode { next, val }
+    }
 }
 
 impl From<Vec<i32>> for ListNode {
