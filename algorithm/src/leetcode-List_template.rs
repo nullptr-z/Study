@@ -7,10 +7,11 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::Solution;
+    use crate::list_utils::arrayToList;
 
     #[test]
     fn should_work() {
-        Solution::sort_list();
+        Solution::sort_list(arrayToList(vec![]));
     }
 }
 
