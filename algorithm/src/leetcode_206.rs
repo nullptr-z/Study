@@ -11,6 +11,23 @@ impl Solution {
 
         dummy
     }
+
+    pub fn reverse_list_recursion(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        fn recursion(
+            head: Option<Box<ListNode>>,
+            pre: Option<Box<ListNode>>,
+        ) -> Option<Box<ListNode>> {
+            if let Some(mut node) = head {
+                let next = node.next.take();
+                node.next = pre;
+                return recursion(next, Some(node));
+            }
+
+            pre
+        }
+
+        recursion(head, None)
+    }
 }
 
 #[cfg(test)]
@@ -20,7 +37,7 @@ mod tests {
 
     #[test]
     fn should_work() {
-        let res = Solution::reverse_list(arrayToList(vec![1, 2, 3, 4, 5]));
+        let res = Solution::reverse_list_recursion(arrayToList(vec![1, 2, 3, 4, 5]));
         println!("【 ret 】==> {:?}", res);
     }
 }
