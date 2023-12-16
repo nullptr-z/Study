@@ -1,5 +1,8 @@
 use std::cell::RefCell;
 use std::rc::Rc;
+
+/// 实际上这道题不需要，首尾指针
+/// 每个函数当成独立的一道题，各自实现即可
 struct MyLinkedList {
     n: i32,
     head: Rc<RefCell<MyLinkedListNode>>,

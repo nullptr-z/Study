@@ -3,7 +3,7 @@ HostName 10.10.106.61
 User root
 
 Host vpn
-HostName 216.127.186.107
+HostName 114.93.138.204
 User root
 
 Host home_deepin
@@ -17,9 +17,9 @@ User zheng
 Port 1100
 
 Host lq
-  HostName frp-bus.top
-  User zheng
-  Port 33222
+HostName frp-bus.top
+User zheng
+Port 33222
 
 Host lq_home
 HostName 192.168.1.104

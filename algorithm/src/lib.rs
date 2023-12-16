@@ -70,6 +70,7 @@ mod leetcode_229;
 mod leetcode_230;
 mod leetcode_236;
 mod leetcode_238;
+mod leetcode_24;
 mod leetcode_26;
 mod leetcode_27;
 mod leetcode_279;
