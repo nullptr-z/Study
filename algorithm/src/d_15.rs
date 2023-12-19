@@ -25,22 +25,22 @@ impl Solution {
 
             while l < r {
                 let sum = nums[l] + nums[i] + nums[r];
-                if sum > 0 {
-                    r -= 1;
-                } else if sum < 0 {
-                    l += 1;
-                } else {
-                    result.push(vec![nums[l], nums[i], nums[r]]);
+                match sum.cmp(&0) {
+                    std::cmp::Ordering::Less => l += 1,
+                    std::cmp::Ordering::Greater => r -= 1,
+                    std::cmp::Ordering::Equal => {
+                        result.push(vec![nums[l], nums[i], nums[r]]);
 
-                    while l < r && nums[l + 1] == nums[l] {
+                        while l < r && nums[l + 1] == nums[l] {
+                            l += 1;
+                        }
+                        while r > l && nums[r - 1] == nums[r] {
+                            r -= 1;
+                        }
+
                         l += 1;
-                    }
-                    while r > l && nums[r - 1] == nums[r] {
                         r -= 1;
                     }
-
-                    l += 1;
-                    r -= 1;
                 }
             }
         }
