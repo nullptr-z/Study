@@ -105,6 +105,7 @@ mod leetcode_516;
 mod leetcode_518;
 mod leetcode_530;
 mod leetcode_54;
+mod leetcode_541;
 mod leetcode_56;
 mod leetcode_57;
 mod leetcode_58;
