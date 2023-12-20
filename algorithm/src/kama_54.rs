@@ -2,17 +2,17 @@ impl Solution {
     pub fn replace_number(s: String) -> String {
         let mut len = s.len();
         let number = "number".chars().collect::<Vec<char>>();
-        let num_len = number.len();
+        let num_len = number.len() - 1;
         let mut strb = s.chars().collect::<Vec<char>>();
         let mut i = 0;
 
         while i < len {
             if strb[i] >= '0' && strb[i] <= '9' {
                 let n = strb.len() - i;
-                strb.resize(len + num_len - 1, '0');
+                strb.resize(len + num_len, '0');
                 len = strb.len();
                 for j in 1..n {
-                    let t = len - num_len - j + 1;
+                    let t = len - num_len - j;
                     strb[len - j] = strb[t];
                 }
                 for (j, v) in number.iter().enumerate() {
