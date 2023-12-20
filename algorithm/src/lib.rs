@@ -10,10 +10,12 @@ mod list_utils;
 mod tree_utils;
 
 mod d_15;
+mod d_151;
 mod d_19;
 mod d_209;
 mod d_27;
 mod d_383;
+mod d_55;
 mod d_704;
 mod kama_54;
 

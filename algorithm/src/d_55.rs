@@ -16,6 +16,7 @@ mod tests {
     #[test]
     fn should_work() {
         let ret = Solution::rotate_left("abcdefg".into(), 2);
+        let ret = Solution::rotate_left("defgabc".into(), 3);
         println!("【 ret 】==> {:?}", ret);
     }
 }
