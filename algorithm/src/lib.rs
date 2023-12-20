@@ -15,6 +15,7 @@ mod d_209;
 mod d_27;
 mod d_383;
 mod d_704;
+mod kama_54;
 
 mod leetcode_1;
 mod leetcode_101;
