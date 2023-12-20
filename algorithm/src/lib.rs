@@ -86,6 +86,7 @@ mod leetcode_300;
 mod leetcode_322;
 mod leetcode_33;
 mod leetcode_34;
+mod leetcode_344;
 mod leetcode_349;
 mod leetcode_35;
 mod leetcode_36;
