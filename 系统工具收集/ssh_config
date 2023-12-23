@@ -1,9 +1,5 @@
-Host luban
-HostName 10.10.106.61
-User root
-
 Host vpn
-HostName 114.93.138.204
+HostName 142.171.138.218
 User root
 
 Host home_deepin
