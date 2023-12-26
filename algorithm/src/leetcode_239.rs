@@ -40,9 +40,8 @@ impl Solution {
             queue.push(v);
             let pre_max = *result.last().unwrap();
             let max = match top_val.cmp(&pre_max) {
-                std::cmp::Ordering::Less => pre_max.max(v),
-                _ => {
-                    if pre_max == v {
+                std::cmp::Ordering::Equal => {
+                    if pre_max <= v {
                         v
                     } else {
                         let mut max = *queue.0.front().unwrap();
@@ -52,6 +51,7 @@ impl Solution {
                         max
                     }
                 }
+                _ => pre_max.max(v),
             };
             result.push(max);
         }
