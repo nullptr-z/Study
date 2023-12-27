@@ -1,6 +1,4 @@
 use std::cell::RefCell;
-use std::collections::VecDeque;
-use std::mem::swap;
 use std::rc::Rc;
 
 impl Solution {
@@ -27,6 +25,20 @@ impl Solution {
             let (left, right) = (node.borrow().left.clone(), node.borrow().right.clone());
             node.borrow_mut().left = Solution::invert_tree_recursion(right);
             node.borrow_mut().right = Solution::invert_tree_recursion(left);
+        }
+
+        root
+    }
+
+    // 前序
+    pub fn invert_tree_recursion_mid(
+        root: Option<Rc<RefCell<TreeNode>>>,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
+        if let Some(node) = root.clone() {
+            let left = node.borrow_mut().left.take();
+            let right = node.borrow_mut().right.take();
+            node.borrow_mut().left = Solution::invert_tree_recursion_mid(right);
+            node.borrow_mut().right = Solution::invert_tree_recursion_mid(left);
         }
 
         root
