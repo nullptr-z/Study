@@ -27,6 +27,28 @@ impl Solution {
 
         result
     }
+
+    pub fn level_order_recursion(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
+        fn recursion(
+            root: &Option<Rc<RefCell<TreeNode>>>,
+            result: &mut Vec<Vec<i32>>,
+            level: usize,
+        ) {
+            if let Some(node) = root {
+                if result.len() < level + 1 {
+                    result.push(vec![])
+                }
+                result[level].push(node.borrow().val);
+                recursion(&node.borrow().left, result, level + 1);
+                recursion(&node.borrow().right, result, level + 1);
+            }
+        }
+
+        let mut result = vec![];
+        recursion(&root, &mut result, 0);
+
+        result
+    }
 }
 
 #[cfg(test)]
