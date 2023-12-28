@@ -37,8 +37,8 @@
 
 ## Length-Prefixed-Message
 
-- 1 字节是否压缩
 - 4 字节消息长度
+- 1 字节是否压缩
 - 最后拼接上消息内容
 
 ## 相关 Create
