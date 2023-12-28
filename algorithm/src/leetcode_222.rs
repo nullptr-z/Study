@@ -3,7 +3,35 @@ use std::collections::VecDeque;
 use std::rc::Rc;
 
 impl Solution {
+    // 求是否满二叉，时间复杂度 < O(n)
     pub fn count_nodes(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        if root.is_none() {
+            return 0;
+        }
+
+        let binding = root.unwrap();
+        let ref_root = binding.borrow();
+
+        let (mut left, mut right) = (ref_root.left.clone(), ref_root.right.clone());
+        let (mut left_depth, mut right_depth) = (0, 0);
+        while let Some(node) = left {
+            left = node.borrow().left.clone();
+            left_depth += 1;
+        }
+        while let Some(node) = right {
+            right = node.borrow().right.clone();
+            right_depth += 1;
+        }
+        if left_depth == right_depth {
+            return (2 << left_depth) - 1;
+        }
+
+        1 + Solution::count_nodes(ref_root.left.clone())
+            + Solution::count_nodes(ref_root.right.clone())
+    }
+
+    // 迭代计数
+    pub fn count_nodes_iter(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         if root.is_none() {
             return 0;
         }
@@ -30,6 +58,7 @@ impl Solution {
         i
     }
 
+    // 递归计数
     pub fn count_node_s(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         match root {
             Some(node) => {

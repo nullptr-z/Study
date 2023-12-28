@@ -28,6 +28,20 @@ impl Solution {
 
         depth
     }
+
+    pub fn max_depth_recursion(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        fn recursion(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+            if let Some(node) = root {
+                let l = recursion(node.borrow().left.clone());
+                let r = recursion(node.borrow().right.clone());
+                return l.max(r) + 1;
+            }
+
+            0
+        }
+
+        recursion(root)
+    }
 }
 
 #[cfg(test)]
