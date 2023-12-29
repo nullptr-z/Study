@@ -1,3 +1,5 @@
+## [常用的库,各种生态](https://time.geekbang.org/column/article/429673)
+
 ## Serde
 
 [serde(rename_all = "snake_case")] 蛇形命名所有字段（域）
@@ -50,7 +52,7 @@ strum_macros = "0.25.3"
 
 ##### Maroc
 
-#[builder(pattern = "mutable")] 表示生成的 Builder 是可变的
+`#[builder(pattern = "mutable")]` 表示生成的 Builder 是可变的
 
 > default:
 
@@ -65,3 +67,8 @@ strum_macros = "0.25.3"
 RocksDB: 是 Facebook 在 Google 的 levelDB 基础上开发的嵌入式 KV store，用 C++ 编写的; 更加合适，因为它在各种复杂的生产环境中经历了千锤百炼
 
 sled: 是 Rust 社区里涌现的优秀的 KV store，对标 RocksDB; 使用起来更简单
+
+## pretty_assertions
+
+高亮输出错误 assert_eq
+`use pretty_assertions::assert_eq;`
