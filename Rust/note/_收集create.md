@@ -59,3 +59,9 @@ strum_macros = "0.25.3"
 #[builder(default = "0")]
 #[builder(default)]
 ```
+
+## 持久化存储 DB
+
+RocksDB: 是 Facebook 在 Google 的 levelDB 基础上开发的嵌入式 KV store，用 C++ 编写的; 更加合适，因为它在各种复杂的生产环境中经历了千锤百炼
+
+sled: 是 Rust 社区里涌现的优秀的 KV store，对标 RocksDB; 使用起来更简单
