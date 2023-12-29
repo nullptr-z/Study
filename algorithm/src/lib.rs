@@ -113,6 +113,7 @@ mod leetcode_36;
 mod leetcode_377;
 mod leetcode_383;
 mod leetcode_392;
+mod leetcode_404;
 mod leetcode_416;
 mod leetcode_452;
 mod leetcode_454;
