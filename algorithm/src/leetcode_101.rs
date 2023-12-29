@@ -1,8 +1,41 @@
 use std::cell::RefCell;
+use std::collections::VecDeque;
 use std::rc::Rc;
 
 impl Solution {
     pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+        let mut result = vec![];
+        let mut rev = vec![];
+        let mut rev_temp = vec![];
+        let mut stack = VecDeque::new();
+        stack.push_back(root);
+
+        let mut i = stack.len();
+        while i > 0 {
+            i -= 1;
+            if let Some(root) = stack.pop_front() {
+                if let Some(node) = root {
+                    result.push(node.borrow().val);
+                    rev_temp.push(node.borrow().val);
+                    stack.push_back(node.borrow().left.clone());
+                    stack.push_back(node.borrow().right.clone());
+                } else {
+                    result.push(i32::MIN);
+                    rev_temp.push(i32::MIN);
+                }
+                if i == 0 {
+                    i = stack.len();
+                    rev_temp.reverse();
+                    rev.append(&mut rev_temp);
+                    rev_temp.clear();
+                }
+            }
+        }
+
+        result == rev
+    }
+
+    pub fn is_symmetrics(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
         if let Some(node) = root {
             let node = node.borrow();
             return Self::compare(&node.left, &node.right);
