@@ -1,35 +1,48 @@
 use std::cell::RefCell;
 use std::rc::Rc;
 
-impl Solution {
-    pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> Vec<Vec<i32>> {
-        let mut result = vec![];
-        pub fn recursion(
-            root: Option<Rc<RefCell<TreeNode>>>,
-            mut acount: Vec<i32>,
-            result: &mut Vec<Vec<i32>>,
-            target_sum: i32,
-        ) {
-            if let Some(node) = root {
-                let refs = node.borrow();
-                let sum = acount.pop().unwrap() + refs.val;
-                acount.push(refs.val);
-                acount.push(sum);
+struct PathSum {
+    result: Vec<Vec<i32>>,
+    amount: Vec<i32>,
+}
 
-                if refs.left.is_none() && refs.right.is_none() {
-                    if acount.pop().unwrap() == target_sum {
-                        result.push(acount);
-                        return;
-                    }
-                }
+impl PathSum {
+    pub fn path_sum(&mut self, root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) {
+        let binding = root.unwrap();
+        let refs = binding.borrow();
+        self.amount.push(refs.val);
+        let target_sum = target_sum - refs.val;
 
-                recursion(refs.left.clone(), acount.clone(), result, target_sum);
-                recursion(refs.right.clone(), acount, result, target_sum);
+        if refs.left.is_none() && refs.right.is_none() {
+            if target_sum == 0 {
+                self.result.push(self.amount.clone());
+                return;
             }
         }
-        recursion(root, vec![0], &mut result, target_sum);
 
-        result
+        if refs.left.is_some() {
+            self.path_sum(refs.left.clone(), target_sum);
+            self.amount.pop();
+        }
+
+        if refs.right.is_some() {
+            self.path_sum(refs.right.clone(), target_sum);
+            self.amount.pop();
+        }
+    }
+}
+
+impl Solution {
+    pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> Vec<Vec<i32>> {
+        let mut ps = PathSum {
+            result: vec![],
+            amount: vec![],
+        };
+        if root.is_some() {
+            ps.path_sum(root, target_sum);
+        }
+
+        ps.result
     }
 }
 
