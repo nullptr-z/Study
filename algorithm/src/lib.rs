@@ -11,6 +11,7 @@ mod tree_utils;
 mod d_101;
 mod d_102;
 mod d_104;
+mod d_106;
 mod d_112;
 mod d_15;
 mod d_151;
