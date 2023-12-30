@@ -1,6 +1,53 @@
 use std::cell::RefCell;
 use std::rc::Rc;
 
+impl Solution {
+    pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> Vec<Vec<i32>> {
+        let mut result = vec![];
+        pub fn recursion(
+            root: Option<Rc<RefCell<TreeNode>>>,
+            mut acount: Vec<i32>,
+            result: &mut Vec<Vec<i32>>,
+            target_sum: i32,
+        ) {
+            if let Some(node) = root {
+                let refs = node.borrow();
+                let sum = acount.pop().unwrap() + refs.val;
+                acount.push(refs.val);
+                acount.push(sum);
+
+                if refs.left.is_none() && refs.right.is_none() {
+                    if acount.pop().unwrap() == target_sum {
+                        result.push(acount);
+                        return;
+                    }
+                }
+
+                recursion(refs.left.clone(), acount.clone(), result, target_sum);
+                recursion(refs.right.clone(), acount, result, target_sum);
+            }
+        }
+        recursion(root, vec![0], &mut result, target_sum);
+
+        result
+    }
+
+    pub fn path_sum_backtrace(
+        root: Option<Rc<RefCell<TreeNode>>>,
+        target_sum: i32,
+    ) -> Vec<Vec<i32>> {
+        let mut ps = PathSum {
+            result: vec![],
+            amount: vec![],
+        };
+        if root.is_some() {
+            ps.path_sum(root, target_sum);
+        }
+
+        ps.result
+    }
+}
+
 struct PathSum {
     result: Vec<Vec<i32>>,
     amount: Vec<i32>,
@@ -29,20 +76,6 @@ impl PathSum {
             self.path_sum(refs.right.clone(), target_sum);
             self.amount.pop();
         }
-    }
-}
-
-impl Solution {
-    pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> Vec<Vec<i32>> {
-        let mut ps = PathSum {
-            result: vec![],
-            amount: vec![],
-        };
-        if root.is_some() {
-            ps.path_sum(root, target_sum);
-        }
-
-        ps.result
     }
 }
 
