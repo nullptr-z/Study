@@ -14,11 +14,14 @@ impl Solution {
         let root_val = postorder.pop().unwrap();
 
         let mut root = TreeNode::new(root_val);
-        let mid = inorder.iter().position(|m| *m == root_val).unwrap();
+        let sp_line = inorder.iter().position(|m| *m == root_val).unwrap();
 
-        root.left = Solution::build_tree(inorder[..mid].to_owned(), postorder[..mid].to_vec());
-        root.right =
-            Solution::build_tree(inorder[(mid + 1)..].to_owned(), postorder[mid..].to_vec());
+        root.left =
+            Solution::build_tree(inorder[..sp_line].to_owned(), postorder[..sp_line].to_vec());
+        root.right = Solution::build_tree(
+            inorder[(sp_line + 1)..].to_owned(),
+            postorder[sp_line..].to_vec(),
+        );
 
         Some(Rc::new(RefCell::new(root)))
     }
