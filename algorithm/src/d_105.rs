@@ -12,7 +12,6 @@ impl Solution {
 
         let (pre, preorder) = preorder.split_at(1);
         let root_val = pre[0];
-        println!("【 inorder 】==> {:?} {}", inorder, root_val);
         let mut root = TreeNode::new(root_val);
         let sp_line = inorder.iter().position(|m| *m == root_val).unwrap();
 
