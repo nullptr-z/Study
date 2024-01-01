@@ -27,7 +27,7 @@ mod tests {
 
     #[test]
     fn should_work() {
-        let ret = Solution::construct_maximum_binary_tree([3, 2, 1, 6, 0, 5]);
+        let ret = Solution::construct_maximum_binary_tree(vec![3, 2, 1, 6, 0, 5]);
         println!("【 ret 】==> {:?}", ret);
     }
 }
