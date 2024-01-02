@@ -6,13 +6,10 @@ impl Solution {
 
         for (i, v) in nums.iter().enumerate() {
             let diff = target - *v;
-            let index = if map.get(&diff).is_some() {
-                *map.get(&diff).unwrap()
-            } else {
-                map.insert(*v, i);
-                continue;
-            };
-            return vec![i as i32, index as i32];
+            if map.get(&diff).is_some() {
+                return vec![i as i32, *map.get(&diff).unwrap() as i32];
+            }
+            map.insert(*v, i);
         }
 
         vec![]
