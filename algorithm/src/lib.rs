@@ -153,6 +153,7 @@ mod leetcode_654;
 mod leetcode_66;
 mod leetcode_70;
 mod leetcode_700;
+mod leetcode_701;
 mod leetcode_707;
 mod leetcode_72;
 mod leetcode_73;

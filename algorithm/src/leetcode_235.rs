@@ -20,7 +20,7 @@ impl Solution {
         None
     }
 
-    pub fn lowest_common_ancestor_s(
+    pub fn lowest_common_ancestor_iter(
         root: Option<Rc<RefCell<TreeNode>>>,
         p: Option<Rc<RefCell<TreeNode>>>,
         q: Option<Rc<RefCell<TreeNode>>>,
@@ -28,16 +28,15 @@ impl Solution {
         let mut stack = vec![root];
         let q = q.unwrap().borrow().val;
         let p = p.unwrap().borrow().val;
-        let (q, p) = (q.min(p), q.max(p)); // 分两行写的话一定记得要换变量名
 
-        while let Some(Some(current)) = stack.pop() {
-            let refs = current.borrow();
-            if refs.val > p {
+        while let Some(Some(root)) = stack.pop() {
+            let refs = root.borrow();
+            if refs.val > q && refs.val > p {
                 stack.push(refs.left.clone());
-            } else if refs.val < q {
+            } else if refs.val < q && refs.val < p {
                 stack.push(refs.right.clone());
             } else {
-                return Some(current.clone());
+                return Some(root.clone());
             }
         }
 
