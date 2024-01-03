@@ -1,0 +1,50 @@
+![Trait](./IO&异步IO.webp)
+
+## Pin
+
+在 Rust 中，Pin 类型用于保证对象的内存地址不会改变。这是必要的，因为一些对象（如 Future）可能会在多次 poll 调用之间保持自身的状态。如果对象的内存地址在这些调用之间发生变化，那么对象的状态也可能会被错误地访问或修改。
+
+当你创建一个 Pin 对象时，你实际上在告诉 Rust，这个对象现在已经被 "钉住" 了，不能被移动。这样，Rust 编译器就会阻止任何可能移动这个对象的操作，从而确保对象的地址保持不变。
+
+这里的 "移动" 是指改变对象在内存中的位置，而不是改变对象的所有权。例如，如果你将一个对象从一个 Vec 移动到另一个 Vec，或者你将一个对象作为函数参数传递，那么这个对象在内存中的位置可能会改变。
+
+Pin 类型通常与 Future 和异步编程一起使用，但它也可以用于其他需要保证对象地址不变的情况。
+
+## Stream Trait
+
+可以自认为的把他叫做，异步迭代器，对应于同步环境下的 Iterator
+
+不断地读`poll_next`取异步数据流中，直到数据源中没有数据为止。常用于从网络 Socket 读数据
+
+Iterator .next 是可以确定会返回数据的
+Stream .poll_next 是不确定的，因为 Stream 是异步的，可能需要等待一段时间才能返回数据。
+
+## Sink trait
+
+常用于异步写入数据，例如将数据写入网络套接字。
+
+向数据源中发送`start_send()`数据, 但 Send 的数据不知道什么时候准备好，去读.poll_read()是否准备好
+
+## 异步 I/O 之 AsyncRead Trait/ AsyncWrite Trait
+
+更为底层的异步读写
+
+这是就是 tokio/futures 提供的两大 Trait
+
+主要使用在文件处理、网络处理等场景，例如 file、TcpStream、TlsStream 都已经实现了它们，还有一些常用的 IO 库都实现了
+
+也可以自己实现一个异步 IO 库，虽然绝大部分时候不需要：
+
+```rs
+impl AsyncRead for myFile
+```
+
+## futures
+
+标准库中的 异步 I/O Trait
+
+他和 tokio 提供的异步 I/O Trait 非常像
+
+因为在 tokio 和 futures 库实现的早期，社区还没有形成比较统一的异步 IO trait，不同的接口背后也有各自不同的考虑，这种分裂的两大阵营；不过现在已经是 tokio 为主了
+
+- [用于在两种结构间切换](https://docs.rs/tokio-util/0.6.9/tokio_util/compat/index.html)
