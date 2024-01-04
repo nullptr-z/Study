@@ -27,9 +27,7 @@ Stream .poll_next 是不确定的，因为 Stream 是异步的，可能需要等
 
 ## 异步 I/O 之 AsyncRead Trait/ AsyncWrite Trait
 
-更为底层的异步读写
-
-这是就是 tokio/futures 提供的两大 Trait
+更为底层的异步读写, tokio/futures 右各自的定义
 
 主要使用在文件处理、网络处理等场景，例如 file、TcpStream、TlsStream 都已经实现了它们，还有一些常用的 IO 库都实现了
 
@@ -39,11 +37,13 @@ Stream .poll_next 是不确定的，因为 Stream 是异步的，可能需要等
 impl AsyncRead for myFile
 ```
 
+实现这个 Trait 即可使用, AsyncReadExt 提供的方法做异步读取
+
+如果编译器抱怨一个泛型参数 “cannot be unpinned” ，一般来说，这个泛型参数需要加 Unpin 的约束。
+
 ## futures
 
-标准库中的 异步 I/O Trait
-
-他和 tokio 提供的异步 I/O Trait 非常像
+提供一些基础异步编程抽象(Trait), 不过 tokio 也提供了不少和他类似的抽象
 
 因为在 tokio 和 futures 库实现的早期，社区还没有形成比较统一的异步 IO trait，不同的接口背后也有各自不同的考虑，这种分裂的两大阵营；不过现在已经是 tokio 为主了
 

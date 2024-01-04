@@ -1,6 +1,6 @@
 ## 使用 Trait 的技巧
 
-1. 一般而言，当 trait 接受某个形参 input，应该使用泛型参数，比如 Add<Rhs>；当它输出某个返参 output，那么应该使用关联类型，比如 Future、Stream、Iterator
+1. 一般而言，当 trait 接受某个形参 input，应该使用泛型参数，比如 Add<Rhs>；当它输出某个返参 output，那么应该使用关联类型 `type Item = ?`，比如 Future、Stream、Iterator
 2. input 如果是泛型的，在传参的时候，如果有多重不同的类型要使用这个方法，那么最好把它们放到一个枚举或者结构体中，不然会各自`静态生成`一份副本
 
 ### [trait 常用示例](https://blog.csdn.net/htyu_0203_39/article/details/109412983)
@@ -35,7 +35,7 @@ rust 编译器广泛用于给具体类型`打标签`，`验明正身`之用或�
 
 ## Send
 
-可以在跨线程时安全地转移，对象实例的所有权
+可以在多线程跨线程时安全地转移，对象实例的所有权
 
 ## Sync
 
