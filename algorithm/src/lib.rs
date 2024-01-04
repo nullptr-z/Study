@@ -154,6 +154,7 @@ mod leetcode_637;
 mod leetcode_64;
 mod leetcode_654;
 mod leetcode_66;
+mod leetcode_669;
 mod leetcode_70;
 mod leetcode_700;
 mod leetcode_701;
