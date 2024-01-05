@@ -29,6 +29,7 @@ mod d_530;
 mod d_55;
 mod d_637;
 mod d_704;
+mod d_77;
 mod d_98;
 
 mod kama_54;
