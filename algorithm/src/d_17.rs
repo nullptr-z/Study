@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, fmt::format};
 
 impl Solution {
     pub fn letter_combinations(digits: String) -> Vec<String> {
@@ -17,6 +17,29 @@ impl Solution {
             }
         }
         ret
+    }
+
+    pub fn letter_combinations2(digits: String) -> Vec<String> {
+        if digits.is_empty() {
+            return vec![];
+        }
+
+        fn backtracking(digits: &str, s: String, index: usize, result: &mut Vec<String>) {
+            if s.len() == digits.len() {
+                result.push(s.to_string());
+                return;
+            }
+            let first = digits.get(index..index + 1).unwrap();
+            let values = get_letters(first);
+            for val in values {
+                backtracking(digits, format!("{}{}", s, val), index + 1, result);
+            }
+        }
+
+        let mut result = vec![];
+        backtracking(&digits, "".into(), 0, &mut result);
+
+        result
     }
 }
 
@@ -42,7 +65,7 @@ mod tests {
 
     #[test]
     fn should_work() {
-        let ret = Solution::letter_combinations("23".into());
+        let ret = Solution::letter_combinations2("23".into());
         println!("【 ret 】==> {:?}", ret);
     }
 }
