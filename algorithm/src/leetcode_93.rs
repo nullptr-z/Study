@@ -7,7 +7,7 @@ impl Solution {
                 return;
             }
 
-            let end = 3.min(s.len());
+            let end = 3.min(s.len()); // 实际上做这个剪枝，也会因为大于255被过滤掉
             for i in 0..end {
                 if i > 0 && s[0] == b'0' {
                     return;
