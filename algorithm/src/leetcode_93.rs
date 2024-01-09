@@ -1,0 +1,44 @@
+impl Solution {
+    pub fn restore_ip_addresses(s: String) -> Vec<String> {
+        fn backtracking(s: &[u8], result: &mut Vec<String>, temp: &mut Vec<String>) {
+            if s.is_empty() && temp.len() == 4 {
+                let ip = temp.join(".");
+                result.push(ip);
+                return;
+            }
+
+            let end = 3.min(s.len());
+            for i in 0..end {
+                if i > 0 && s[0] == b'0' {
+                    return;
+                }
+                let sub_str = String::from_utf8(s[0..i + 1].to_vec()).unwrap();
+                if sub_str.parse::<i32>().unwrap() > 255 {
+                    return;
+                }
+                temp.push(sub_str);
+                backtracking(&s[i + 1..], result, temp);
+                temp.pop();
+            }
+        }
+
+        let mut result = vec![];
+        let mut temp = vec![];
+        backtracking(s.as_bytes(), &mut result, &mut temp);
+
+        result
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::Solution;
+
+    #[test]
+    fn should_work() {
+        let ret = Solution::restore_ip_addresses("25525511135".into());
+        println!("【 ret 】==> {:?}", ret);
+    }
+}
+
+pub struct Solution;
