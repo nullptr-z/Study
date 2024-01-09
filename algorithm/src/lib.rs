@@ -171,6 +171,7 @@ mod leetcode_74;
 mod leetcode_740;
 mod leetcode_746;
 mod leetcode_77;
+mod leetcode_78;
 mod leetcode_80;
 mod leetcode_82;
 mod leetcode_88;
