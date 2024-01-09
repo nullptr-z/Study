@@ -9,11 +9,8 @@ impl Solution {
 
             let end = 3.min(s.len()); // 实际上不做这个剪枝，也会因为大于255被过滤掉
             for i in 0..end {
-                if i > 0 && s[0] == b'0' {
-                    return;
-                }
                 let sub_str = String::from_utf8(s[0..i + 1].to_vec()).unwrap();
-                if sub_str.parse::<i32>().unwrap() > 255 {
+                if i > 0 && s[0] == b'0' || sub_str.parse::<i32>().unwrap() > 255 {
                     return;
                 }
                 temp.push(sub_str);
