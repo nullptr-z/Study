@@ -1,6 +1,6 @@
 impl Solution {
     pub fn restore_ip_addresses(s: String) -> Vec<String> {
-        fn backtracking(s: &[u8], result: &mut Vec<String>, temp: &mut Vec<String>) {
+        fn backtracking(s: &str, result: &mut Vec<String>, temp: &mut Vec<String>) {
             if s.is_empty() && temp.len() == 4 {
                 let ip = temp.join(".");
                 result.push(ip);
@@ -9,8 +9,8 @@ impl Solution {
 
             let end = 3.min(s.len()); // 实际上不做这个剪枝，也会因为大于255被过滤掉
             for i in 0..end {
-                let sub_str = String::from_utf8(s[0..i + 1].to_vec()).unwrap();
-                if i > 0 && s[0] == b'0' || sub_str.parse::<i32>().unwrap() > 255 {
+                let sub_str = s[0..i + 1].to_string();
+                if i > 0 && &s[0..1] == "0" || sub_str.parse::<i32>().unwrap() > 255 {
                     return;
                 }
                 temp.push(sub_str);
@@ -21,7 +21,7 @@ impl Solution {
 
         let mut result = vec![];
         let mut temp = vec![];
-        backtracking(s.as_bytes(), &mut result, &mut temp);
+        backtracking(&s, &mut result, &mut temp);
 
         result
     }
