@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-
 impl Solution {
     pub fn permute_unique(nums: Vec<i32>) -> Vec<Vec<i32>> {
         fn backtracking(
@@ -13,9 +11,8 @@ impl Solution {
                 return;
             }
 
-            let mut flags = HashSet::new();
             for (i, &val) in nums.iter().enumerate() {
-                if used[i] || !flags.insert(val) {
+                if used[i] || i > 0 && !used[i - 1] && nums[i] == nums[i - 1] {
                     continue;
                 }
                 temp.push(val);
@@ -26,6 +23,8 @@ impl Solution {
             }
         }
 
+        let mut nums = nums;
+        nums.sort();
         let mut result = vec![];
         let mut temp = vec![];
         let mut used = vec![false; nums.len()];
