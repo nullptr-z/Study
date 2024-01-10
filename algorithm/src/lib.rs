@@ -136,6 +136,7 @@ mod leetcode_452;
 mod leetcode_454;
 mod leetcode_459;
 mod leetcode_46;
+mod leetcode_47;
 mod leetcode_474;
 mod leetcode_48;
 mod leetcode_49;
