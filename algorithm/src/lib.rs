@@ -124,6 +124,7 @@ mod leetcode_347;
 mod leetcode_349;
 mod leetcode_35;
 mod leetcode_36;
+mod leetcode_37;
 mod leetcode_377;
 mod leetcode_383;
 mod leetcode_39;
