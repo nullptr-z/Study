@@ -1,5 +1,21 @@
 impl Solution {
     pub fn jump(nums: Vec<i32>) -> i32 {
+        let end = nums.len() - 1;
+        let mut jump = 0;
+        let mut next_index = 0;
+        let mut cur_index = 0;
+        for (i, step) in nums.into_iter().enumerate().take(end) {
+            next_index = next_index.max(i + step as usize);
+            if i == cur_index {
+                cur_index = next_index;
+                jump += 1;
+            }
+        }
+
+        jump
+    }
+
+    pub fn jumps(nums: Vec<i32>) -> i32 {
         let len = nums.len() - 1;
         let mut count = 0;
 
@@ -31,29 +47,6 @@ impl Solution {
 
         count
     }
-
-    pub fn jumps(nums: Vec<i32>) -> i32 {
-        let mut step_count = 0;
-        let mut step = 0;
-        let end = (nums.len() - 1) as i32;
-        for i in 0..nums.len() - 1 {
-            let val = nums[i];
-            // step_count = step_count.max(val);
-            if val > step_count {
-                step_count = val;
-                step += 1
-            }
-            if step_count + (i as i32) == end {
-                return step;
-            }
-            step_count -= 1;
-            if step_count < 0 {
-                return 0;
-            }
-        }
-
-        step
-    }
 }
 
 #[cfg(test)]
@@ -62,8 +55,8 @@ mod tests {
 
     #[test]
     fn should_work() {
-        let ret = Solution::jump(vec![1, 2, 3]);
-        println!("【 ret 】==> {:?}", ret);
+        // let ret = Solution::jump(vec![1, 2, 3]);
+        // println!("【 ret 】==> {:?}", ret);
         let ret = Solution::jump(vec![2, 3, 0, 1, 4]);
         println!("【 ret 】==> {:?}", ret);
         let ret = Solution::jump(vec![2, 3, 1, 1, 4]);
