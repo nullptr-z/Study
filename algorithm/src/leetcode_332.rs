@@ -96,7 +96,7 @@ mod tests {
         let ret = Solution::find_itinerary(vec![
             vec!["JFK".to_string(), "KUL".to_string()],
             vec!["JFK".to_string(), "NRT".to_string()],
-            vec!["NRT".to_string(), "JFK".to_string()],
+            vec!["KUL".to_string(), "JFK".to_string()],
         ]);
         println!("【 ret 】==> {:?}", ret);
         // let ret = Solution::find_itinerary(vec![
