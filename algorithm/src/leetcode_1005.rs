@@ -15,7 +15,7 @@ impl Solution {
 
         // 取反偶数次还是原来的数
         if k % 2 == 1 {
-            // 将最小的正数取反
+            // 将最小的数取反
             *nums.last_mut().unwrap() *= -1;
         }
         // 求和
