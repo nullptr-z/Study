@@ -36,6 +36,7 @@ mod d_98;
 mod kama_54;
 
 mod leetcode_1;
+mod leetcode_1005;
 mod leetcode_101;
 mod leetcode_102;
 mod leetcode_103;
