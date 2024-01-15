@@ -3,28 +3,30 @@ impl Solution {
         let (mut five, mut ten) = (0, 0);
 
         for money in bills {
-            let ten_back = (money - 5) / 10;
-            let is_five = (money - 5) % 10;
-            let mut five_back3 = if is_five > 0 { 1 } else { 0 };
+            let (mut ten_back, mut five_back) = (0, 0);
+            if money == 5 {
+                five += 1;
+                continue;
+            } else if money == 10 {
+                ten += 1;
+                five_back += 1;
+            } else {
+                ten_back += 1;
+                five_back += 1;
+            }
 
             if ten >= ten_back {
                 ten -= ten_back
             } else {
                 ten = 0;
                 let diff = ten_back - ten;
-                five_back3 += diff * 2; // 换成5元需要找零的张数
+                five_back += diff * 2; // 换成5元需要找零的张数
             }
 
-            if five >= five_back3 {
-                five -= five_back3
+            if five >= five_back {
+                five -= five_back
             } else {
                 return false;
-            }
-
-            if money == 10 {
-                ten += 1;
-            } else if money == 5 {
-                five += 1;
             }
         }
 
