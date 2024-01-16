@@ -188,6 +188,7 @@ mod leetcode_73;
 mod leetcode_74;
 mod leetcode_740;
 mod leetcode_746;
+mod leetcode_763;
 mod leetcode_77;
 mod leetcode_78;
 mod leetcode_80;
