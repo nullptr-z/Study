@@ -1,7 +1,6 @@
 impl Solution {
     pub fn merge(mut intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
         intervals.sort();
-        println!("【 intervals 】==> {:?}", intervals);
         let mut result: Vec<Vec<i32>> = vec![intervals[0].to_owned()];
 
         for i in 1..intervals.len() {
