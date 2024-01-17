@@ -30,6 +30,7 @@ mod d_383;
 mod d_452;
 mod d_530;
 mod d_55;
+mod d_56;
 mod d_637;
 mod d_704;
 mod d_77;
