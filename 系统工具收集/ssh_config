@@ -31,3 +31,10 @@ Host lq_home
 HostName frp-box.top
 User zheng
 Port 33322
+
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+  Port 22
+  ProxyCommand ~/githu_proxy
