@@ -34,6 +34,7 @@ mod d_56;
 mod d_637;
 mod d_70;
 mod d_704;
+mod d_746;
 mod d_77;
 mod d_98;
 mod leetcode_509;
