@@ -1,7 +1,7 @@
 impl Solution {
     pub fn min_cost_climbing_stairs(mut cost: Vec<i32>) -> i32 {
         let mut dp = vec![cost[0], cost[1]];
-        cost.push(0);
+        cost.push(0); // 追加一个表示顶楼
         for i in 2..cost.len() {
             let val = cost[i] + (dp[i - 1]).min(dp[i - 2]);
             dp.push(val);
