@@ -37,5 +37,4 @@ Host github.com
   User git
   IdentityFile ~/.ssh/id_rsa
   Port 22
-  ProxyCommand ~/githu_proxy
-  # /usr/bin/nc -x 127.0.0.1:7890 github.com 22
+  ProxyCommand /usr/bin/nc -x 127.0.0.1:7890 github.com 22
