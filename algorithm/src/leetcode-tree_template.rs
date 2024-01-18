@@ -15,7 +15,9 @@ mod tests {
     use super::Solution;
 
     #[test]
-    fn should_work() {}
+    fn should_work() {
+        let tree = arrayToTree(vec![0, 0, -1, 0, 0]);
+    }
 }
 
 pub struct Solution;
