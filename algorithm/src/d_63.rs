@@ -9,7 +9,7 @@ impl Solution {
         }
 
         for rows in obstacle_grid.iter().skip(1) {
-            for j in 0..rows.len() {
+            for j in 0..dp.len() {
                 if rows[j] == 1 {
                     dp[j] = 0;
                     continue;
@@ -32,10 +32,9 @@ mod tests {
     fn should_work() {
         let ret = Solution::unique_paths_with_obstacles(vec![
             // vec![1, 0],
-            // vec![0, 0, 0],
-            // vec![0, 1, 0],
-            // vec![0, 0, 0],
-            vec![1],
+            vec![0, 0, 0],
+            vec![0, 1, 0],
+            vec![0, 0, 0],
         ]);
         println!("【 ret 】==> {:?}", ret);
     }
