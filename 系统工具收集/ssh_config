@@ -13,7 +13,7 @@ User zheng
 Port 1100
 
 Host lq
-HostName frp-bus.top
+HostName frp-net.top
 User zheng
 Port 33222
 
@@ -26,11 +26,6 @@ Host mac_air
 HostName 192.168.188.122
 User zhouzheng
 Port 22
-
-Host lq_home
-HostName frp-box.top
-User zheng
-Port 33322
 
 Host github.com
   HostName github.com
