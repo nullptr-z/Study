@@ -15,10 +15,10 @@ r.Header.Get("Accept-Encoding") // 返回字符串
 
 ```go
 func post(w http.ResponseWriter, r *http.Request) {
-	len := r.ContentLength
-	body := make([]byte, len)
-	r.Body.Read(body)
-	fmt.Fprintln(w, string(body))
+  len := r.ContentLength
+  body := make([]byte, len)
+  r.Body.Read(body)
+  fmt.Fprintln(w, string(body))
 }
 ```
 
@@ -49,14 +49,15 @@ enctype/content-type 默认 `application/x-www-form-unlencoded`
 Method: `get/post`
 
 ```go
-// 解析 Request：
+// 解析 Request
 r.ParseForm()
 r.ParseMultipartForm()
-// 获取 form 参数：
+// 获取 form 参数
 r.Form            // 获取所有参数
 r.PostForm        // 只获取表单部分数据，忽略Url参数
 r.MultipartForm   // 获取`multipart/form-data`类型的数据
-// 直接获取参数，不显示解析
+r.MultipartReader(r)  // 也用于处理multipart/form-data类型的请求，流式的读个读取
+// 直接获取参数，不需要显示调用解析
 r.FormValue("name") // 优先获取表单中的值，如果URL有同名参数
 r.PostFormValue("name")
 
@@ -74,6 +75,33 @@ func formMultipart(w http.ResponseWriter, r *http.Request) {
 ```
 
 ![form-enctype](./form-enctype.jpg)
+
+## Upload File
+
+`multipart/form-data`实际最常见的应用场景就是文件上传
+
+```go
+func upload(w http.ResponseWriter, r *http.Request) {
+  // 方法一
+  r.ParseMultipartForm(1024)
+  fileHanler := r.MultipartForm.File["files"][0]
+  file, err := fileHanler.Open()
+  // 方法二
+  // 如果只获取一个文件，这一行等同于上面三行
+  file, _, err := r.FormFile("files")
+
+  if err == nil {
+    buf, err := io.ReadAll(file)
+    if err == nil {
+      fmt.Fprintln(w, string(buf))
+    }
+  }
+}
+```
+
+## JSON Body
+
+---
 
 > 扩展知识
 
