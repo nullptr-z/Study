@@ -61,3 +61,24 @@ func (slf *helloHandle) ServeHTTP(rsp http.ResponseWriter, req *http.Request) {
 mh := helloHandle{}
 http.Handle("/hello", &mh)
 ```
+
+## 常用的 Handler
+
+这写方法的定义用 vscode 去打开看
+
+http.NotFoundHandler 返回 404
+http.RedirectHandler 根据状态码跳转
+http.StripPrefix 去掉指定的前缀，再调用一个 Handle
+http.TimeoutHandler 在指定时间内完成了，返回一个 Handle, 超时就使用指定 msg 返回
+http.FileServer 接受一个字符串，将这个字符串的路径，作为内部 root，叫做虚拟文件系统；底层使用的是对应平台的文件系统
+
+## http.FileServer 文件服务器
+
+```go
+// 访问目录下welcome/文件，html、css
+http.Handle("/welcome", http.FileServer(http.Dir("welcome")))
+// 等价写法
+http.HandleFunc("/welcome", func(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "welcome"+r.URL.Path)
+})
+```
