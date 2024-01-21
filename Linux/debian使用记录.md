@@ -1,3 +1,6 @@
+开机不启动图形界面：systemctl set-default multi-user.target
+开机启动界面：systemctl set-default graphical.target
+
 终乱码端棱形
 dpkg-reconfigure locales
 
