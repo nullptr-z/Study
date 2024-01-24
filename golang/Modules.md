@@ -2,6 +2,7 @@
 
 ```sh
 go env -w GO111MODULE=on # 开启module模式
+go env -w GOPROXY=https://goproxy.cn    # 换包源
 ```
 
 ## mod 常用命令
@@ -24,8 +25,6 @@ go mod why	    |   查看为什么需要依赖某模块
 ```sh
 go env                |   查看go的环境变量
 go env -w name=value  |   value写入name环境变量
-go env -w GOPROXY=https://goproxy.cn  |   换包源
-
 ```
 
 ## env 字段说明
