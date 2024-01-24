@@ -28,8 +28,8 @@ User zhouzheng
 Port 22
 
 Host github.com
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_rsa
-  Port 22
-  ProxyCommand /usr/bin/nc -x 127.0.0.1:7890 github.com 22
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa
+Port 22
+ProxyCommand /usr/bin/nc -x 127.0.0.1:7890 github.com 22
