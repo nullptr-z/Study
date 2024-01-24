@@ -163,6 +163,7 @@ mod leetcode_474;
 mod leetcode_48;
 mod leetcode_49;
 mod leetcode_491;
+mod leetcode_494;
 mod leetcode_5;
 mod leetcode_50;
 mod leetcode_501;
