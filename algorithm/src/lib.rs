@@ -131,6 +131,7 @@ mod leetcode_322;
 mod leetcode_33;
 mod leetcode_332;
 mod leetcode_34;
+mod leetcode_343;
 mod leetcode_344;
 mod leetcode_347;
 mod leetcode_349;
