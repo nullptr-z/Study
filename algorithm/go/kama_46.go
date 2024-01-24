@@ -16,23 +16,18 @@ func max(a, b int) int {
 }
 
 func oneTwoBackpack(weight []int, price []int, n int) int {
-	dp := make([][]int, len(weight)+1)
-	for i := range dp {
-		dp[i] = make([]int, n+1)
-	}
+	dp := make([]int, n+1)
 
 	for i := 0; i < len(weight); i++ {
-		for cap := 0; cap <= n; cap++ {
+		for cap := n; cap >= 0; cap-- {
 			remain := cap - weight[i]
 			if remain >= 0 {
-				dp[i+1][cap] = max(dp[i][cap], price[i]+dp[i][remain])
-			} else {
-				dp[i+1][cap] = dp[i][cap]
+				dp[cap] = max(dp[cap], price[i]+dp[remain])
 			}
 		}
 	}
 
-	return dp[len(dp)-1][n]
+	return dp[n]
 }
 
 func main() {
