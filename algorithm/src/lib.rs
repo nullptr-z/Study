@@ -53,6 +53,7 @@ mod leetcode_103;
 mod leetcode_1038;
 mod leetcode_104;
 mod leetcode_1047;
+mod leetcode_1049;
 mod leetcode_105;
 mod leetcode_106;
 mod leetcode_107;

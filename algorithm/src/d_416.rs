@@ -4,14 +4,15 @@ impl Solution {
         if sum % 2 > 0 {
             return false;
         }
-        let n = (sum / 2) as usize;
-        let mut dp = vec![0; n + 1];
+        let pack = (sum / 2) as usize;
+        let mut dp = vec![0; pack + 1];
 
         for i in nums {
-            for cap in (i as usize..=n).rev() {
+            // 滚动数据写法才在 i 位置结束
+            for cap in (i as usize..=pack).rev() {
                 let remain = (cap as i32) - i;
                 dp[cap] = dp[cap].max(dp[remain as usize] + i);
-                if dp[cap] == n as i32 {
+                if dp[cap] == pack as i32 {
                     return true;
                 }
             }
