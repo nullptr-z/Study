@@ -1,16 +1,13 @@
 impl Solution {
-    pub fn complete_backpack(wvs: Vec<Vec<i32>>, n: i32) -> i32 {
-        let mut dp = vec![0; n as usize + 1];
+    pub fn complete_backpack(wvs: Vec<Vec<usize>>, n: usize) -> i32 {
+        let mut dp = vec![0; n + 1];
         for wv in wvs {
-            for cap in 1..dp.len() {
-                let remain = (cap as i32) - wv[0];
-                if remain >= 0 {
-                    dp[cap] = dp[cap].max(dp[remain as usize] + wv[1]);
-                }
+            for cap in wv[0]..dp.len() {
+                dp[cap] = dp[cap].max(dp[cap - wv[0]] + wv[1]);
             }
         }
 
-        *dp.last().unwrap()
+        *dp.last().unwrap() as i32
     }
 }
 
