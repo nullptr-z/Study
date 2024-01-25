@@ -10,7 +10,7 @@ impl Solution {
             }
         }
 
-        dp[amount] as i32
+        dp[amount]
     }
 }
 
