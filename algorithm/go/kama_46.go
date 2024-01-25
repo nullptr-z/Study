@@ -8,12 +8,12 @@ import (
 	"strings"
 )
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+// func max(a, b int) int {
+// 	if a > b {
+// 		return a
+// 	}
+// 	return b
+// }
 
 func oneTwoBackpack(weight []int, price []int, n int) int {
 	dp := make([]int, n+1)

@@ -41,9 +41,9 @@ mod d_704;
 mod d_746;
 mod d_77;
 mod d_98;
-mod leetcode_509;
 
 mod kama_46;
+mod kama_52;
 mod kama_54;
 
 mod leetcode_1;
@@ -168,6 +168,7 @@ mod leetcode_494;
 mod leetcode_5;
 mod leetcode_50;
 mod leetcode_501;
+mod leetcode_509;
 mod leetcode_51;
 mod leetcode_513;
 mod leetcode_515;
