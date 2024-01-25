@@ -5,8 +5,7 @@ impl Solution {
         dp[0] = 1;
         for cap in 1..dp.len() {
             for &n in nums.iter() {
-                let n = n as usize;
-                if cap >= n {
+                if cap >= n as usize {
                     dp[cap] += dp[cap - n as usize];
                 }
             }
