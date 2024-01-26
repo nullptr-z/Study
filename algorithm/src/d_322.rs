@@ -1,5 +1,5 @@
 impl Solution {
-    pub fn coin_change(mut coins: Vec<i32>, amount: i32) -> i32 {
+    pub fn coin_change(coins: Vec<i32>, amount: i32) -> i32 {
         let mut dp: Vec<i32> = vec![amount + 1; amount as usize + 1];
         dp[0] = 0;
         for &c in coins.iter() {
