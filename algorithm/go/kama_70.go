@@ -24,7 +24,7 @@ func climbStairs(n int, m int) int {
 }
 
 func main() {
-	// 读取输入
+	// 读取输入n,m
 	reader := bufio.NewReader(os.Stdin)
 	input, _ := reader.ReadString('\n')
 	input = strings.TrimSpace(input)
