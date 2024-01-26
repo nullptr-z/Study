@@ -47,6 +47,7 @@ mod d_98;
 mod kama_46;
 mod kama_52;
 mod kama_54;
+mod kama_70;
 
 mod leetcode_1;
 mod leetcode_1005;
