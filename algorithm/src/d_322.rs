@@ -1,6 +1,7 @@
 impl Solution {
     pub fn coin_change(coins: Vec<i32>, amount: i32) -> i32 {
-        let mut dp: Vec<i32> = vec![amount + 1; amount as usize + 1];
+        let amount_u = amount as usize;
+        let mut dp: Vec<i32> = vec![amount + 1; amount_u + 1];
         dp[0] = 0;
         for &c in coins.iter() {
             let c = c as usize;
@@ -8,10 +9,10 @@ impl Solution {
                 dp[cap] = dp[cap].min(dp[cap - c] + 1)
             }
         }
-        if dp[amount as usize] > amount {
+        if dp[amount_u] > amount {
             return -1;
         }
-        dp[amount as usize]
+        dp[amount_u]
     }
 }
 

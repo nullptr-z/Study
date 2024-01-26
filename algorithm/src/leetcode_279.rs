@@ -1,9 +1,22 @@
-//
-
 pub struct Solution;
 
 impl Solution {
+    // 效率更高
     pub fn num_squares(n: i32) -> i32 {
+        let mut dp = vec![0; 1 + n as usize];
+        for cap in 1..dp.len() {
+            let mut min = i32::MAX;
+            let mut j = 1;
+            while (j * j) <= cap {
+                min = min.min(dp[cap - (j * j) as usize] + 1);
+                dp[cap] = min;
+                j += 1;
+            }
+        }
+        dp[n as usize]
+    }
+
+    pub fn num_squaress(n: i32) -> i32 {
         let mut f = vec![0; (n + 1) as usize];
         for i in 1..=n {
             let mut minn = i32::MAX;
