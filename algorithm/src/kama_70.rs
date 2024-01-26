@@ -11,21 +11,6 @@ impl Solution {
         }
         dp[n]
     }
-
-    pub fn climb_stairs_s(n: usize, m: usize) -> usize {
-        let mut dp = vec![0; m + 1];
-        dp[0] = 1;
-        for cap in 1..=n {
-            for w in 1..=m {
-                if cap >= w {
-                    dp[w] += dp[cap - w];
-                }
-            }
-            println!("【 dp 】==> {:?}", dp);
-        }
-        println!("【 dp 】==> {:?}", dp);
-        dp[m]
-    }
 }
 
 #[cfg(test)]
