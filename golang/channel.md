@@ -16,6 +16,10 @@ x,ok := <- channel// 检查channel是否已经关闭或者为空
 
 len(channel)  // 长度
 cap(channel)  // 缓冲区，注意这是缓冲区，满了是不会自动增长的
+
+// 不常用，用于函数签名
+ch_only_send := make(chan <- int, 1)     // 只写
+ch_only_receive := make( <- chan int, 1)  // 只读
 ```
 
 ## 带缓冲 channel
@@ -102,18 +106,84 @@ for val := range channel {
 监控多个 channel，直到某一个可读或写
 
 ```go
+label:
 for {
-  flags := false
   select {
   // 可读取
   case <- c1:
     fmt.Println("<-c1:", <-c1)
-  // 可写入
+    // 可写入
   case c2 <- 0:
-    flags = true
-  }
-  if flags {
-    break
+
+  default:
+    break label
   }
 }
 ```
+
+## 定时任务
+
+内部就是一个写管道，指定时间后写数据
+
+```go
+func main() {
+	// 定时任务，管道
+	fmt.Println("now:", time.Now())
+	sec := 3 * time.Second
+	// 方式一
+	fmt.Println("never:", <-time.After(sec)) // 3秒后执行
+	// 方式二
+	timer := time.NewTimer(sec)
+	fmt.Println("never:", <-timer.C) // 3秒后执行
+}
+```
+
+## 循环定时任务
+
+```go
+func main() {
+	count := 3
+	for {
+		t := <-ticker.C
+		fmt.Println("at:", t.Format("2006-01-02 03:04:05AM"))
+		count--
+		if count < 1 {
+			break
+		}
+	}
+}
+```
+
+事件机制实际上就是，`time.NewTimer(sec)`和`timer.Reset(sec)`实现的
+
+## 等待任务，sync.WaitGroup
+
+内部使用信号量唤醒等待，和`atomic`计数任务数量
+
+- ADD 添加任务+
+- Done 任务完成-
+- Wait 阻塞任务，被信号量唤醒时，使用 SAW 判断计数器是否为 0，退出或继续阻塞
+
+```go
+func main() {
+	var group sync.WaitGroup
+	count := 3
+	ticker := time.NewTicker(1 * time.Second)
+	group.Add(1)
+	go func() {
+		defer group.Done()
+		defer ticker.Stop()
+		for {
+			t := <-ticker.C
+			fmt.Println("at:", t.Format("2006-01-02 03:04:05AM"))
+			count--
+			if count < 1 {
+				break
+			}
+		}
+	}()
+	group.Wait()
+}
+```
+
+![WaitGroup执行流程](WaitGroup.png)
