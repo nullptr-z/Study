@@ -8,6 +8,9 @@ M:N 模型，M 协程，N 线程
 
 ```go
 runtime.Goexit() // 退出协程
+runtime.NumCPU()  // 查看电脑的核心数，线程数
+runtime.GOMAXPROCS(16) // 设置CPU 核心数，1.8之后默认全开
+
 ```
 
 ## 优势
