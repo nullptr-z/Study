@@ -29,6 +29,8 @@
 Iterator .next 是可以确定会返回数据的
 Stream .poll_next 是不确定的，因为 Stream 是异步的，可能需要等待一段时间才能返回数据。
 
+无法和 for 循环 Stream 一起使用, 可以和命令式的 while let 和 next/try_next 函数可以以起使用
+
 ## Sink trait
 
 常用于异步写入数据，例如将数据写入网络套接字。

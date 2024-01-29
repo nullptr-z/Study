@@ -10,3 +10,7 @@
 2. 对于栈上的变量默认 Rust 是 move 的，直接返回即可转移所有权
 3. std::mem::take 夺走变量的所有权，内部变量就变成了 default 的值了
 4. 在堆上创建数据，如果担心开销，使用 Rc/Arc
+
+## 三大扛把子
+
+Stream、Future、Iterate,都是通过迭代产生一个值
