@@ -20,7 +20,7 @@ mod tests {
 
     #[test]
     fn should_work() {
-        let ret = Solution::max_profit(vec![3, 3, 5, 0, 0, 3, 1, 4]);
+        let ret = Solution::max_profit(vec![3, 2, 6, 5, 0, 3]);
         println!("【 ret 】==> {:?}", ret);
     }
 }
