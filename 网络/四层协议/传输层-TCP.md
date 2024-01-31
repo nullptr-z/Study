@@ -22,9 +22,8 @@ MTU（最大传输单元，Max Transmission Unit, MTU）
 
 _最大报文段长度，指报文段里应用层数据的最大长度_
 
-通常被设置为，MTU - TCP 首部（20Byte） - IP 首部(20Byte，IPV6 占 40Byte) = payload 有效载荷
 通常被设置为，发送主机本地的最大链路层帧的长度（最大传输单元，Max Transmission Unit, MTU）
-MSS - TCP 首部（20Byte） - IP 首部(20Byte) = Body 可用长度
+MSS - TCP 首部（20Byte） - IP 首部(20Byte) = payload(1460Byte) 可用长度
 
 以太网和 PPP 链路层协议都具有 1500 字节的 MTU,所以 MSS 通常长度是 1460 字节
 
