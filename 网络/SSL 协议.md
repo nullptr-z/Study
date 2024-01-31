@@ -1,18 +1,3 @@
-## keepalive
-
-当 HTTP 采用 keepalive 模式，当客户端向服务器发生请求之后，客户端如何判断服务器的数据已经发生完成？
-https://www.cnblogs.com/skynet/archive/2010/12/11/1903347.html
-
-**分块传输编码提供了以下几点好处：**
-
-1. 持久链接需要服务器在开始发送消息体前发送 Content-Length 消息头字段，动态内容，content-length 无法预知
-2. 分块传输编码允许服务器在最后发送消息头字段。对于那些头字段值在内容被生成之前无法知道的情形非常重要，例如消息的内容要使用散列进行签名，散列的结果通过 HTTP 消息头字段进行传输。
-3. HTTP 服务器使用压缩时,是分开压缩的，边压缩边发送;普通模式是整个负载进行压缩
-
-### MTU
-
-最大传输单元 MTU（Maximum Transmission Unit，MTU），是指网络能够传输的最大数据包大小，通常为 1500，以字节为单位。
-
 ## SSL 套接字
 
 一、安全套接字层协议 SSL 简介
@@ -47,40 +32,3 @@ https://www.cnblogs.com/skynet/archive/2010/12/11/1903347.html
 
 缺点
 使用 SSL 需要通信双方进行额外的工作，需要对信息进行加密和解密，需要增加系统的开销，从而使得使用 SSL 比不使用 SSL 的通信慢。
-
-## HTTP 协议定义了一些默认的头部，包括：
-
-Accept：指定客户端能够接收的 MIME 类型
-Accept-Charset：指定客户端能够接受的字符集
-Accept-Encoding：指定客户端能够接受的编码方式
-Accept-Language：指定客户端所希望的语言版本
-Connection：指定浏览器和服务器之间连接的类型
-Host：指定请求的 URL 中的主机名和端口号
-Referer：指定从哪个页面来访问当前请求的页面
-User-Agent：指定客户端浏览器的类型和版本号
-以上默认头部是客户端发出的，而服务器返回的默认头部则包括：
-
-Content-Length：指定实体主体的大小
-Content-Type：指定实体主体的 MIME 类型
-Date：指定响应的发送日期和时间
-Server：指定服务器的名称和版本号
-
-## HTTP 协议
-
-### 请求
-
-request 行:
-请求方式 请求 API（uri） HTTP 版本 结束符号
-Method Request-URI HTTP-Version CRLF
-GET / HTTP/1.1 \r\n
-
-uri: 是 HTTP 中的术语,URL 去除 `IP:port`(host)的部分, 每个`/`一个节点
-非管理员用户只能监听大于 1024 的端口
-
-### 响应
-
-HTTP 版本 状态码 短语 CRLF
-
-一个使用 HTTP 1.1 版本的响应例子，其状态码为 200，原因短语为 OK，没有
-header，也没有 body：
-HTTP/1.1 200 OK\r\n `(此处为header)` \r\n `(此处为body)`
