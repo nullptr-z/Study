@@ -72,7 +72,7 @@ CDN，位于客户和服务器之间，既是客户也是服务
 
 > 解决方案
 
-- 服务端设置`Access-Control-Allow-Origin:[option]`， `*`代表允许任意跨域请求;也可以指定特定域名
+- 服务端设置`Access-Control-Allow-Origin:[option]`， `*`代表允许任意跨域请求;也可以指定特定域名；还可以放宽一些其他要求例如 Method 的类型
 - 使用反向代理，nginx
 - JSONP，较复杂，需要客户端服务端代码都改动
 
@@ -87,14 +87,15 @@ CDN，位于客户和服务器之间，既是客户也是服务
 
 核心原理：需要请求头 `Origin 等于 服务端的Access-Control-Allow-Origin`或者`Access-Control-Allow-Origin: *`
 
-1. 正规合法的浏览器会在触发预检时，设置 `Origin: 当前域名` 发送一个 OPTION 请求到服务端，服务端如果检查不通过则 CORS 错误
-2. 通过了服务器会返回一个时间，允许一段时间直接访问它；
+1. 正规合法的浏览器会在触发预检时，设置 `Origin: 当前域名` 发送一个 OPTION 请求到服务端，告诉服务器存在危险，服务端如果检查不通过则 CORS 错误
+2. 通过了服务器会返回一个时间，允许一段时间直接访问它
 3. 前端无法设置 Origin
 
-![预检](预检.png)
+> 浏览器行为
 
 - 简单请求，Method[GET|POST|HEAD] ，Content-Type:[text|form-data|x-www-form-urlencoded], 其他头保持默认就一定满足简单请求规范
 - 预检请求，浏览器发出预检，也会出发 CORS 检查；
+  ![预检](预检.png)
 
 在 Chrome Network 请求条目 Method 显示 GET+**Preflight**就是预检请求
 非必要的话服务端度应该避免预检请求，避免预检，提高响应速度；ps 不要总想着用 app/json 发数据
