@@ -1,7 +1,7 @@
 ## 启动过程
 
 1. loading boot loader from ROM
-2. loader will xv6 kernel in 0x80000000 of memory
+2. load will xv6 kernel in 0x80000000 of memory
 3. entry: kernel/entry.S:6, set up stack for C language
 4. jump to kernel/start.c:21; a series of initialize; focus :line 32 `w_mepc((uint64)main)`;run instruction mret
 5. (supervisor mode) jump to kernel/main.c:11; a series initialize
