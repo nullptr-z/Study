@@ -17,7 +17,6 @@ impl Solution {
         let mut dp: Vec<i32> = vec![1; nums.len()];
         let mut max_len = 1;
         for i in 1..dp.len() {
-            dp[i] = 1;
             for j in 0..i {
                 if nums[j] < nums[i] {
                     dp[i] = dp[i].max(dp[j] + 1);
