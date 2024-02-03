@@ -1,5 +1,6 @@
 impl Solution {
-    pub fn max_sub_array(nums: Vec<i32>) -> i32 {
+    // 贪心
+    pub fn max_sub_arrays(nums: Vec<i32>) -> i32 {
         let mut max_sum = i32::MIN;
         let mut sum = 0;
         for val in nums {
@@ -8,6 +9,24 @@ impl Solution {
             sum = sum.max(0);
         }
         max_sum
+    }
+
+    // DP
+    pub fn max_sub_array(nums: Vec<i32>) -> i32 {
+        let mut max = nums[0];
+        let mut dp = vec![0; nums.len()];
+        dp[0] = nums[0];
+        for j in 1..nums.len() {
+            let sum = nums[j] + dp[j - 1];
+            if dp[j - 1] > 0 {
+                dp[j] = sum
+            } else {
+                dp[j] = nums[j]
+            }
+            max = max.max(dp[j])
+        }
+
+        max
     }
 }
 
