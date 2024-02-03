@@ -60,6 +60,7 @@ mod leetcode_1005;
 mod leetcode_101;
 mod leetcode_102;
 mod leetcode_103;
+mod leetcode_1035;
 mod leetcode_1038;
 mod leetcode_104;
 mod leetcode_1047;
