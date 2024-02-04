@@ -1,5 +1,5 @@
 impl Solution {
-    pub fn is_subsequence(s: String, t: String) -> bool {
+    pub fn is_subsequencs(s: String, t: String) -> bool {
         if s.len() < 1 {
             return true;
         }
@@ -16,6 +16,24 @@ impl Solution {
         }
 
         false
+    }
+
+    // dp，最长子序列解法
+    pub fn is_subsequence(s: String, t: String) -> bool {
+        let ss = s.as_bytes();
+        let tt = t.as_bytes();
+        let mut dp = vec![vec![0; s.len() + 1]; t.len() + 1];
+        for i in 1..dp.len() {
+            for j in 1..dp[0].len() {
+                if tt[i - 1] == ss[j - 1] {
+                    dp[i][j] = dp[i - 1][j - 1] + 1
+                } else {
+                    dp[i][j] = dp[i][j - 1].max(dp[i - 1][j])
+                }
+            }
+        }
+
+        *dp.last().unwrap().last().unwrap() == s.len()
     }
 }
 
