@@ -85,20 +85,28 @@ CDN，位于客户和服务器之间，既是客户也是服务
 
 服务器在浏览器的配合下，限制那些域能访问自己
 
-核心原理：需要请求头 `Origin 等于 服务端的Access-Control-Allow-Origin`或者`Access-Control-Allow-Origin: *`
+核心原理：需要请求头 `浏览器发送的Origin 与 服务端的Access-Control-Allow-Origin匹配`，设置`Access-Control-Allow-Origin: *`
 
-1. 正规合法的浏览器会在触发预检时，设置 `Origin: 当前域名` 发送一个 OPTION 请求到服务端，告诉服务器存在危险，服务端如果检查不通过则 CORS 错误
-2. 通过了服务器会返回一个时间，允许一段时间直接访问它
-3. 前端无法设置 Origin
+1. 正规合法的浏览器会在触发*预检*时，设置 `Origin: 当前域名` 发送一个 OPTION 请求到服务端，告诉服务器存在危险，服务端如果检查不通过则 CORS 错误
+2. 通过了服务器会返回一个时间，会允许一段时间直接访问它
+3. 前端代码无法设置 Origin，发起跨域请求时浏览器自动行为
 
 > 浏览器行为
 
-- 简单请求，Method[GET|POST|HEAD] ，Content-Type:[text|form-data|x-www-form-urlencoded], 其他头保持默认就一定满足简单请求规范
-- 预检请求，浏览器发出预检，也会出发 CORS 检查；
-  ![预检](预检.png)
+## 复杂、预检请求
+
+复杂请求会导致浏览器发出触发 CORS 检查；
+
+简单请求要求，请求头包含:
+
+- Method:[GET|POST|HEAD] 请求通常不需要预检，但 PUT、DELETE、CONNECT、OPTIONS、TRACE、PATCH 等方法会触发预检。
+- Content-Type: [application/x-www-form-urlencoded、multipar、form-data、text/plain] 之一时，才不会触发预检
+- 自定义头部: CORS 安全列出的头部[Accept-*|Accept-Language]..，其他的自定义头部会触发预检。
+
+![预检过程](预检.png)
 
 在 Chrome Network 请求条目 Method 显示 GET+**Preflight**就是预检请求
-非必要的话服务端度应该避免预检请求，避免预检，提高响应速度；ps 不要总想着用 app/json 发数据
+非必要的话服务端度应该避免预检请求，避免预检，提高响应速度；ps 启示， 不要总想着用 app/json 发数据
 
 ## CGI
 
