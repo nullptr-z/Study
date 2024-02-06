@@ -199,6 +199,7 @@ mod leetcode_55;
 mod leetcode_56;
 mod leetcode_57;
 mod leetcode_58;
+mod leetcode_583;
 mod leetcode_59;
 mod leetcode_61;
 mod leetcode_617;

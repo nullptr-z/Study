@@ -18,8 +18,8 @@ impl Solution {
             }
         }
 
-        for d in &dp {
-            println!("【 d 】==> {:?}", d);
+        for d in dp.iter().skip(1) {
+            println!("【 d 】==> {:?}", &d[1..]);
         }
 
         dp[s_len - 1][t_len - 1]
