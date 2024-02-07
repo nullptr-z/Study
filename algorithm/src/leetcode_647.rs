@@ -10,6 +10,8 @@ impl Solution {
         for i in (0..s.len()).rev() {
             for j in i..s.len() {
                 // j-1 <= 1代表相同位置，字符串本身就是一个回文
+                // dp[i + 1][j - 1] 保存着上一次的比较结果，是否是回文串；
+                // 注意：i+1是因为 i 是反向迭代的
                 if ss[i] == ss[j] && (j - i <= 1 || dp[i + 1][j - 1]) {
                     dp[i][j] = true;
                     res += 1;
@@ -49,7 +51,7 @@ mod tests {
 
     #[test]
     fn should_work() {
-        let ret = Solution::count_substrings("aaa".into());
+        let ret = Solution::count_substrings_dp("aaa".into());
         println!("【 ret 】==> {:?}", ret);
     }
 }
