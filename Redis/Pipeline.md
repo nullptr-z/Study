@@ -2,8 +2,13 @@ Pipeline 主要是一种网络优化。它本质上意味着客户端缓冲一�
 
 多个 Redis 命令一次性发送过去，减少 RTT
 
-```
+```go
 pipe = redis.Pipeline()
-..commands..
+pipe.set()
+pipe.set()
 pipe.exec()
+
+pipe = redis.TxPipelined() // 事务版,自动回滚机制
+pipe.Watch()              // 监听+事务处理
+
 ```
