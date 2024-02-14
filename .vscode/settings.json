@@ -1,0 +1,12 @@
+{
+  "search.exclude": {
+    "**/*.excalidraw": true,
+    "**/node_modules": true,
+    "**/*.log": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "*.excalidraw": true,
+    "**/*.excalidraw": true
+  }
+}
