@@ -1,12 +1,19 @@
-# 为什么需要 gRPC
+# RPC
 
-## 应用场景
+RPC 是一种编程模型，允许一个程序调用另一个程序或者远程服务的子程序(函数)，就像调用本地函数一样，而不必关心底层通信细节。RPC 可以基于不同的传输协议实现，包括 HTTP、TCP、UDP 等，来实现远程过程调用。
 
-构建在 http2 之上, 所以叫做`gRPC over HTTP/2`，双全工
+通过一些协议头，标记服务端提供的服务信息，例如远程方法名`Method: hello.sayhi`
+
+# 什么是 gRPC
+
+构建在 http2 之上, 所以叫做`gRPC over HTTP/2`，双全工；
 
 无法直接跟浏览器的很好的交互，通常需要`gRPC web`协助访问
 
 对 mobile、server to server 场景可以很好的使用 gRPC，因为他们都是基于 http2 的
+
+- 数据协议: protobuf
+- 传输协议: http2
 
 ## 构建一个 gRPC 服务
 
