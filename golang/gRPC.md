@@ -16,3 +16,13 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest 新
 
 option go_package = "package path/name"; 指定 go 的包名
 option go_package = ".;name"; 直接在当前目录生成
+
+## MetaData
+
+```go
+md := metadata.New(map[string]string{})
+// client 发送 metadata
+metadata.NewOutGoingContext(ctx, md)
+// server 接受 metadata
+metadata.FromInComingContext(ctx)
+```

@@ -48,6 +48,14 @@ RPC 是一种编程模型，允许一个程序调用另一个程序或者远程�
 - 1 字节是否压缩
 - 最后拼接上消息内容
 
+## 状态码
+
+[StatusCode](https://github.com/grpc/grpc/blob/master/doc/statuscodes.md)
+
+## MetaData
+
+类似 http 的请求头，`K:[V]` 键值对支持，V 是字符串数组
+
 ## 相关 Create
 
 [prost] (https://github.com/nullptr-z/rust-live/tree/main/create-practice/prost-live)
