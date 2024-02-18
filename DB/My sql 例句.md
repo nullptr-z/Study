@@ -38,3 +38,21 @@ group by product_id
 - ifnull: 替换 null 值，这里替换成 0
 - round 保留小数位数
 - 使用 group 分组时，如果没有多其他合并项处理，只会保留第一行的数据，这里进行了 sum 聚合
+
+## 查询多少天内的时间区间
+
+```sh
+SELECT
+    activity_date AS day,
+    COUNT(distinct user_id) AS active_users
+FROM
+    Activity
+WHERE
+    activity_date BETWEEN DATE_ADD('2019-07-27',INTERVAL -29 day) and '2019-07-27'
+GROUP BY
+    activity_date
+```
+
+## DISTINCT
+
+用于返回唯一不同的值，即从查询结果中去除重复的行。
