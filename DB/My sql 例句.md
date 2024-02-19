@@ -41,9 +41,10 @@ group by product_id
 
 ## 查询多少天内的时间区间
 
-```sh
+```sql
 SELECT
     activity_date AS day,
+    -- 同一个人只需要统计一次
     COUNT(distinct user_id) AS active_users
 FROM
     Activity
@@ -51,6 +52,17 @@ WHERE
     activity_date BETWEEN DATE_ADD('2019-07-27',INTERVAL -29 day) and '2019-07-27'
 GROUP BY
     activity_date
+```
+
+## 筛出仅在时间段内的数据
+
+相同 ID，但凡有一条不在时间段内，也过滤掉
+
+```sh
+select sales.product_id as product_id, product.product_name as product_name
+from sales left join product on sales.product_id = product.product_id
+group by product_id
+having min(sale_date) >= '2019-01-01' and max(sale_date) <= '2019-03-31'
 ```
 
 ## DISTINCT
