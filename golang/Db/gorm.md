@@ -36,7 +36,7 @@ https://gorm.io/zh_CN/docs/models.html
 
 ## 软删除
 
-通过设置`gorm.DeleteAt`来设置软删除，设置后 Delete api 只会在设删除设置删除时间，而不是真的删除，之后的查询也不会查询到这条数据
+通过字段设置`gorm.DeleteAt`类型来设置软删除，设置后 Delete api 只会在设删除设置删除时间，而不是真的删除，之后的查询也不会查询到这条数据
 
 需要`Unscoped()` 来查询软删除的数据；`Unscoped().Delete`会永久删除
 
