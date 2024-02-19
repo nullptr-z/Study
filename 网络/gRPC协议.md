@@ -15,14 +15,6 @@ RPC 是一种编程模型，允许一个程序调用另一个程序或者远程�
 - 数据协议: protobuf
 - 传输协议: http2
 
-## 构建一个 gRPC 服务
-
-1. 创建`proto`文件, 用于定义`struct`, `enum`等数据结构。 和使用这些结构的`service`，这个 service 被称为`rpc service`
-2. 使用`prost`编译`proto`文件，生成`rust`代码和添加`derive`。这里我们使用`tonic_build`来编译`proto`文件，因为他是基于`prost_build`的，对其扩展, 能生成更多的代码，比如`grpc service`定义的代码
-3. Client: gRPC 提供完整的用于客户端调用的代码，客户端只需要链接并调用接口就可以了
-
-在 Client 和 Server 发起调用`Call`之前，可以通过`interceptor`做额外的处理
-
 ## 特性
 
 - 支持`async/await`，通过`tokio`支持，作为底层的异步框架
@@ -55,11 +47,3 @@ RPC 是一种编程模型，允许一个程序调用另一个程序或者远程�
 ## MetaData
 
 类似 http 的请求头，`K:[V]` 键值对支持，V 是字符串数组
-
-## 相关 Create
-
-[prost] (https://github.com/nullptr-z/rust-live/tree/main/create-practice/prost-live)
-
-[hyper](http)
-
-[twirp](http)

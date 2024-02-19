@@ -2,15 +2,16 @@
 
 ## 插件安装
 
-```she
+```sh
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest 新
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest # 新版，分离出来了
 ```
 
 ## 编译
 
-1. `protoc -I . hello.proto --go_out=.` 编译 RPC 代码；不再支持`plugins=grpc`
-1. `protoc -I . hello.proto  --go-grpc_out=.` 编译 gRPC 代码
+- `protoc -I . hello.proto --go_out=.` 编译 RPC 代码；不再支持`plugins=grpc`
+
+- `protoc -I . hello.proto  --go-grpc_out=.` 编译 gRPC 代码
 
 ## go_package
 
