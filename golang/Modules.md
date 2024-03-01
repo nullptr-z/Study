@@ -5,6 +5,13 @@ go env -w GO111MODULE=on # 开启module模式
 go env -w GOPROXY=https://goproxy.cn    # 换包源
 ```
 
+## 环境变量
+
+```sh
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
+```
+
 ## mod 常用命令
 
 ```sh

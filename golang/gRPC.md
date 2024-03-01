@@ -4,7 +4,7 @@
 
 ```sh
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest # 新版，分离出来了
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest # 新，rpc从protocol分离出来了
 ```
 
 ## 编译

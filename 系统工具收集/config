@@ -7,7 +7,7 @@ Host home_debian
   Port 22
   User zheng
 
-Host home_deepin
+Host home_deepin-remote
 HostName frp-any.top
 Port 61111
 User zheng
@@ -22,7 +22,7 @@ HostName frp-net.top
 User zheng
 Port 33222
 
-Host lq_home
+Host home_deepin
 HostName 192.168.1.104
 User zheng
 Port 22
