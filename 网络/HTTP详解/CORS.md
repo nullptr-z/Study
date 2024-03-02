@@ -49,3 +49,7 @@ PUT、DELETE、CONNECT、OPTIONS、TRACE、PATCH 等方法会触发预检。
 非必要的话服务端度应该避免预检请求，避免预检，因为可以提高响应速度，毕竟多一次请求；--ps 启示， 不要总想着用 app/json 发数据
 
 ![预检过程](预检.png)
+
+## 允许认证信息
+
+如果需要使用 Cookie 机制，服务端设置设置 withCredentials 为 True，以允许携带凭证机制。使用 Token 不需要开启
