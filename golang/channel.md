@@ -52,19 +52,19 @@ interface{} 类型的管道，可以接受不同类的类型，注意从管道�
 
 ```go
 func main() {
-	ch := make(chan interface{}, 5)
+  ch := make(chan interface{}, 5)
 
-	ch <- User{age: 22}
-	age := (<-ch).(User).age  // 断言
-	fmt.Println("age:", age)
+  ch <- User{age: 22}
+  age := (<-ch).(User).age  // 断言
+  fmt.Println("age:", age)
 
-	ch <- 1
-	ch <- User{name: "my name"}
-	ch <- "哈哈"
-	close(ch) // 一定要关闭后才能 for。否则会阻塞
-	for c := range ch {
-		fmt.Println("c:", c)
-	}
+  ch <- 1
+  ch <- User{name: "my name"}
+  ch <- "哈哈"
+  close(ch) // 一定要关闭后才能 for。否则会阻塞
+  for c := range ch {
+    fmt.Println("c:", c)
+  }
 }
 ```
 
@@ -127,14 +127,14 @@ for {
 
 ```go
 func main() {
-	// 定时任务，管道
-	fmt.Println("now:", time.Now())
-	sec := 3 * time.Second
-	// 方式一
-	fmt.Println("never:", <-time.After(sec)) // 3秒后执行
-	// 方式二
-	timer := time.NewTimer(sec)
-	fmt.Println("never:", <-timer.C) // 3秒后执行
+  // 定时任务，管道
+  fmt.Println("now:", time.Now())
+  sec := 3 * time.Second
+  // 方式一
+  fmt.Println("never:", <-time.After(sec)) // 3秒后执行
+  // 方式二
+  timer := time.NewTimer(sec)
+  fmt.Println("never:", <-timer.C) // 3秒后执行
 }
 ```
 
@@ -142,15 +142,15 @@ func main() {
 
 ```go
 func main() {
-	count := 3
-	for {
-		t := <-ticker.C
-		fmt.Println("at:", t.Format("2006-01-02 03:04:05AM"))
-		count--
-		if count < 1 {
-			break
-		}
-	}
+  count := 3
+  for {
+    t := <-ticker.C
+    fmt.Println("at:", t.Format("2006-01-02 03:04:05AM"))
+    count--
+    if count < 1 {
+      break
+    }
+  }
 }
 ```
 
@@ -166,23 +166,23 @@ func main() {
 
 ```go
 func main() {
-	var group sync.WaitGroup
-	count := 3
-	ticker := time.NewTicker(1 * time.Second)
-	group.Add(1)
-	go func() {
-		defer group.Done()
-		defer ticker.Stop()
-		for {
-			t := <-ticker.C
-			fmt.Println("at:", t.Format("2006-01-02 03:04:05AM"))
-			count--
-			if count < 1 {
-				break
-			}
-		}
-	}()
-	group.Wait()
+  var group sync.WaitGroup
+  count := 3
+  ticker := time.NewTicker(1 * time.Second)
+  group.Add(1)
+  go func() {
+    defer group.Done()
+    defer ticker.Stop()
+    for {
+      t := <-ticker.C
+      fmt.Println("at:", t.Format("2006-01-02 03:04:05AM"))
+      count--
+      if count < 1 {
+        break
+      }
+    }
+  }()
+  group.Wait()
 }
 ```
 
