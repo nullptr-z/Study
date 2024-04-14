@@ -15,8 +15,8 @@ echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> 
 命令行提示:
 克隆仓库到本地
 cd ~/.oh-my-zsh/custom/plugins
+cd $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions.git
-$ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 echo "plugins=(zsh-autosuggestions git)" >> ~/.zshrc
 
