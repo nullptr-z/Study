@@ -10,10 +10,10 @@ func main() {
 func reverseStr(s string, k int) string {
 	len, bStr := len(s), []byte(s)
 	k2 := 2 * k
-	i := k2
+	i := 0
 
 	for {
-		l := i - k2
+		l := i
 		r := l + k - 1
 		if l >= len {
 			break
