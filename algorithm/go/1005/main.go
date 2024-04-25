@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"sort"
+	"math"
+	"slices"
 )
 
 func main() {
@@ -11,25 +12,29 @@ func main() {
 }
 
 func largestSumAfterKNegations(nums []int, k int) int {
-	sort.Ints(nums)
+	slices.SortFunc(nums, func(a int, b int) int {
+		diff := int(math.Abs(float64(b))) - int(math.Abs(float64(a)))
+		if b+a == 0 {
+			return -1
+		}
+		return diff
+	})
 
-	i := 0
-	for i < len(nums) {
-		if nums[i] >= 0 || k == 0 {
+	for i, v := range nums {
+		if k <= 0 {
 			break
 		}
-		nums[i] = 0 - nums[i]
-		k--
-		i++
-	}
-	i = min(i, len(nums)-1)
-
-	if k%2 == 1 {
-		if i > 0 && nums[i-1] < nums[i] {
-			nums[i-1] = 0 - nums[i-1]
-		} else {
+		// 主要为了处理，排序后，在正数和正数之间的负数
+		if v < 0 {
+			k--
 			nums[i] = 0 - nums[i]
 		}
+	}
+	fmt.Println("nums:", nums)
+
+	if k%2 == 1 {
+		end := len(nums) - 1
+		nums[end] = 0 - nums[end]
 	}
 
 	sum := 0
