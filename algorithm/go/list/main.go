@@ -1,4 +1,6 @@
-package linked
+package list
+
+import "fmt"
 
 type ListNode struct {
 	Val  int
@@ -15,4 +17,12 @@ func NewLinked(nodes []int) *ListNode {
 	}
 
 	return dummy.Next
+}
+
+func (lk *ListNode) IterLink() {
+	fmt.Print("lk: ")
+	for lk != nil {
+		fmt.Print(lk.Val)
+		lk = lk.Next
+	}
 }
