@@ -1,47 +1,25 @@
 package main
 
-import "fmt"
-
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
 }
 
+// 中序行不通
 func isSymmetric(root *TreeNode) bool {
-
-	vals := *new([]int)
-	concurrent(root, &vals)
-	fmt.Println("vals:", vals)
-	len := len(vals)
-	if len == 1 {
-		return true
-	} else if len == 0 {
-		return true
-	}
-	r, l := 0, len-1
-
-	for r < l {
-		if vals[r] != vals[l] {
-			return false
-		}
-		r++
-		l--
-	}
-
-	return true
+	return concussion(root.Left, root.Right)
 }
 
-func concurrent(root *TreeNode, vals *[]int) {
-	if root != nil {
-		if root.Left == nil && root.Right == nil {
-			*vals = append(*vals, root.Val)
-			return
-		}
-		concurrent(root.Left, vals)
-		*vals = append(*vals, root.Val)
-		concurrent(root.Right, vals)
-	} else {
-		*vals = append(*vals, -1)
+func concussion(left *TreeNode, right *TreeNode) bool {
+	if left == right {
+		return true
 	}
+	if left == nil || right == nil || (left.Val != right.Val) {
+		return false
+	}
+
+	l_ret := concussion(left.Left, right.Right)
+	r_ret := concussion(left.Right, right.Left)
+	return l_ret && r_ret
 }
