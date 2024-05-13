@@ -14,7 +14,7 @@ func concussion(root *TreeNode, isLeft bool) int {
 	if root == nil {
 		return 0
 	}
-	if root != nil && root.Left == nil && root.Right == nil {
+	if root.Left == nil && root.Right == nil {
 		if isLeft {
 			return root.Val
 		} else {
