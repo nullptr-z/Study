@@ -15,13 +15,16 @@ func combine(n int, k int) [][]int {
 }
 
 func concussion(n, k, startIdx int, subArray []int, result *[][]int) {
-	if len(subArray) == k {
+	sLen := len(subArray)
+	if sLen == k {
 		subArrCopy := make([]int, k)
 		copy(subArrCopy, subArray)
 		*result = append(*result, subArrCopy)
 		return
 	}
-	for i := startIdx; i <= n; i++ {
+	// for i := startIdx; i <= n; i++ {
+	// 剪枝
+	for i := startIdx; i <= n-(k-sLen)+1; i++ {
 		subArray = append(subArray, i)
 		concussion(n, k, i+1, subArray, result)
 		subArray = subArray[:len(subArray)-1]
