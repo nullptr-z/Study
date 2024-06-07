@@ -16,6 +16,5 @@ func fib(n int) int {
 		dp[i] = dp[i-1] + dp[i-2]
 	}
 
-	fmt.Println("dp:", dp)
 	return dp[n]
 }
