@@ -72,3 +72,8 @@ sled: 是 Rust 社区里涌现的优秀的 KV store，对标 RocksDB; 使用起�
 
 高亮输出错误 assert_eq
 `use pretty_assertions::assert_eq;`
+
+## tracing_subscriber
+
+将日志打印到控制台
+tracing_subscriber::fmt::init();
