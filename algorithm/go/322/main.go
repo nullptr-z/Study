@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	ret := coinChange([]int{1, 2, 5}, 11)
+	ret := coinChange([]int{4, 5}, 11)
 	fmt.Println("ret:", ret)
 }
 
