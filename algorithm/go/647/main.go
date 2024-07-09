@@ -20,7 +20,6 @@ func countSubstrings(s string) int {
 			if s[i] == s[j] && (j-i <= 1 || dp[i+1][j-1]) {
 				// if s[i] == s[j] && (i < len || dp[i+1][j-1]) {
 				dp[i][j] = true
-				fmt.Println("dp:", dp)
 				count++
 			}
 		}
