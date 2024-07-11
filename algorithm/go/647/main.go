@@ -18,7 +18,6 @@ func countSubstrings(s string) int {
 	for i := len; i >= 0; i-- {
 		for j := i; j < len; j++ {
 			if s[i] == s[j] && (j-i <= 1 || dp[i+1][j-1]) {
-				// if s[i] == s[j] && (i < len || dp[i+1][j-1]) {
 				dp[i][j] = true
 				count++
 			}
