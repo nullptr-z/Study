@@ -16,28 +16,6 @@ func main() {
 	s1Len := len(s1)
 	s2Len := len(s2)
 
-	if s1Len == 0 && s2Len == 0 {
-		fmt.Println(0)
-		return
-	}
-	if s1Len == 0 && s2Len > 0 {
-		sum := 0
-		for i := 0; i < s2Len; i++ {
-			sum += int(s2[i])
-		}
-		fmt.Println(sum)
-		return
-	}
-
-	if s2Len == 0 && s1Len > 0 {
-		sum := 0
-		for i := 0; i < s1Len; i++ {
-			sum += int(s1[i])
-		}
-		fmt.Println(sum)
-		return
-	}
-
 	dp := make([][]int, s1Len+1)
 	for i := 0; i < len(dp); i++ {
 		dp[i] = make([]int, s2Len+1)
