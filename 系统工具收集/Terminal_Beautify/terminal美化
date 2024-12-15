@@ -1,22 +1,21 @@
 install zsh
 
-install.sh
+chsh -s $(which zsh)
+
+./install.sh
 
 git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/powerlevel10k
 echo 'source ~/.oh-my-zsh/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 
 
-语法高亮:
-sudo apt install zsh-syntax-highlighting
-
-echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
-
-
-命令行提示:
-克隆仓库到本地
+语法高亮-自动补全:
+# sudo apt install zsh-syntax-highlighting
+# echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 cd ~/.oh-my-zsh/custom/plugins
 cd $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions.git
+
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 echo "plugins=(zsh-autosuggestions git)" >> ~/.zshrc
 
