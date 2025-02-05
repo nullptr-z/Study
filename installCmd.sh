@@ -1,8 +1,7 @@
 #/bin/bash
 echo "alias hotkey='cat ~/Study/hotKey'" >> ~/.zshrc
 echo "alias cargow='cargo watch -x run'" >> ~/.zshrc
-mv ~/.ssh/config ~/.ssh/config_remarks
-ln -s $PWD/系统工具收集/ssh_config  ~/.ssh/config
+
 
 ## 别名
 alias gitdayline='git log --author=zhouzheng --since=2.day.ago --shortstat'
