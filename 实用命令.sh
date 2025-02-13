@@ -8,3 +8,4 @@ ls -l resource/v8/ | grep ^- | wc -l
 
 ## 输出目录结构树
 find . -type d -name "ignore" -prune -o -print | tree -F --fromfile
+

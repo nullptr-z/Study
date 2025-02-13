@@ -2,15 +2,19 @@
 
 > sudo -u postgres psql
 
-````sql
--- 创建角色
+```sh
+# 创建角色
 > postgres=#  CREATE ROLE 用户名 WITH LOGIN PASSWORD '用户密码';
--- 创建超级权限角色
+# 创建超级权限角色
 CREATE ROLE 用户名 WITH LOGIN PASSWORD '用户密码' SUPERUSER;
--- 修改密码
+# 修改密码
 ALTER ROLE 用户名 WITH PASSWORD '新密码';
--- 移除密码,无密码登录
+# 移除密码,无密码登录
 ALTER ROLE 角色名称 WITH PASSWORD NULL;
+\q
+
+pgcli -U zheng -d reservation
+```
 
 ## 安装
 
@@ -20,7 +24,7 @@ apt install pgcli
 # 进入数据库控制台
 pgcli -u postgres_name -w postgres_password -p 5433
 
-````
+```
 
 ## 建库/建表
 
